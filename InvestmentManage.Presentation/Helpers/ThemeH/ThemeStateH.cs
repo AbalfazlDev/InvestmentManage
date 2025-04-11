@@ -37,7 +37,7 @@ namespace InvestmentManage.Presentation.Helpers.ThemeH
             paletteHelper.SetTheme(theme);
         }
 
-        private void darkMod(bool isDark)
+        public void DarkMod(bool isDark)
         {
             var paletteHelper = new PaletteHelper();
             Theme theme = paletteHelper.GetTheme();
