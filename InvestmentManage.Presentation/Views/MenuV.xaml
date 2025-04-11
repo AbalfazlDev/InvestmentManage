@@ -5,14 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:InvestmentManage.Presentation.Views" 
-             xmlns:viewmodels="clr-namespace:InvestmentManage.Presentation.ViewModels"
+             xmlns:vmmenu="clr-namespace:InvestmentManage.Presentation.ViewModels"
+             xmlns:vmthemeset="clr-namespace:InvestmentManage.Presentation.Helpers.ThemeH"
              xmlns:helpers="clr-namespace:InvestmentManage.Presentation.Helpers"
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="800"
              d:DesignWidth="100">
     <UserControl.DataContext>
-        <viewmodels:MenuVM/>
+        <vmmenu:MenuVM/>
     </UserControl.DataContext>
     <UserControl.Resources>
         <helpers:EnumToDescriptionConverter x:Key="EnumConverter"/>
@@ -22,7 +23,7 @@
 
     <Border CornerRadius="20"
             Padding="5"
-            Background="#F2F3F7">
+            Background="{DynamicResource BackgroundBrush}">
         <StackPanel >
             <CheckBox
             HorizontalAlignment="Center"
@@ -32,7 +33,7 @@
             Style="{StaticResource MaterialDesignFilterChipSecondaryOutlineCheckBox}"/>
             <StackPanel>
                 <Border Width="50" Height="50" BorderThickness="5" BorderBrush="{Binding TxtColor}" Background="{Binding TxtColor}"/>
-                <Label Margin="15,5,0,0" Foreground="{Binding TxtColor}" Content="{Binding TxtColor}" FontSize="10"/>
+                <Label Margin="15,5,0,0" Foreground="{DynamicResource ForegroundBrush}" Content="{Binding TxtColor}" FontSize="10"/>
                 <ListBox
             HorizontalAlignment="Right"
             VerticalAlignment="Center"

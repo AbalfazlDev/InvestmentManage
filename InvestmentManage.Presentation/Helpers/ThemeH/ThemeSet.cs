@@ -12,9 +12,13 @@ using System.Windows.Controls;
 
 namespace InvestmentManage.Presentation.Helpers.ThemeH
 {
-    public class ThemeStateH
+     public class ThemeSet
     {
-        public void ChangeThemeColor(Color colorPrimary, Color colorSecond)
+        public ThemeSet()
+        {
+
+        }
+        static public void ChangeThemeColor(Color colorPrimary, Color colorSecond)
         {
             var paletteHelper = new PaletteHelper();
             //Retrieve the app's existing theme
@@ -37,8 +41,9 @@ namespace InvestmentManage.Presentation.Helpers.ThemeH
             paletteHelper.SetTheme(theme);
         }
 
-        public void DarkMod(bool isDark)
+        static public void ChangeDarkMode(bool isDark)
         {
+   
             var paletteHelper = new PaletteHelper();
             Theme theme = paletteHelper.GetTheme();
             if (isDark)
@@ -46,9 +51,13 @@ namespace InvestmentManage.Presentation.Helpers.ThemeH
                 theme.SetBaseTheme(BaseTheme.Dark);
                 theme.PrimaryMid = new ColorPair(Colors.Purple, Colors.White);
 
+                //TxtColor = Brushes.BurlyWood;
             }
             else
+            {
                 theme.SetBaseTheme(BaseTheme.Light);
+                // TxtColor = Brushes.Yellow;
+            }
 
             paletteHelper.SetTheme(theme);
         }

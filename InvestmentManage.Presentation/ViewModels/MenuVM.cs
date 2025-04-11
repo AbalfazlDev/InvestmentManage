@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Collections.ObjectModel;
 using InvestmentManage.Presentation.Helpers;
 using static InvestmentManage.Domain.Model.MarketCategory.MarketTypeM;
+using InvestmentManage.Presentation.Helpers.ThemeH;
+using System.Windows;
 
 namespace InvestmentManage.Presentation.ViewModels
 {
@@ -74,22 +76,17 @@ namespace InvestmentManage.Presentation.ViewModels
 
         private void darkMod(bool isDark)
         {
-            var paletteHelper = new PaletteHelper();
-            Theme theme = paletteHelper.GetTheme();
             if (isDark)
             {
-                theme.SetBaseTheme(BaseTheme.Dark);
-                theme.PrimaryMid = new ColorPair(Colors.Purple, Colors.White);
-                TxtColor = Brushes.BurlyWood;
+                ThemeSet.ChangeDarkMode(isDark);
+                
             }
             else
             {
-                theme.SetBaseTheme(BaseTheme.Light);
-                TxtColor = Brushes.Yellow;
+                ThemeSet.ChangeDarkMode(isDark);
 
             }
-
-            paletteHelper.SetTheme(theme);
+            
         }
 
 
