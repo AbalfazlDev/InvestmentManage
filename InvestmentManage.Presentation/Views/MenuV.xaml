@@ -23,7 +23,7 @@
 
     <Border CornerRadius="20"
             Padding="5"
-            Background="{DynamicResource BackgroundBrush}">
+            Background="{DynamicResource MenuBG}">
         <StackPanel >
             <CheckBox
             HorizontalAlignment="Center"
@@ -33,7 +33,7 @@
             Style="{StaticResource MaterialDesignFilterChipSecondaryOutlineCheckBox}"/>
             <StackPanel>
                 <Border Width="50" Height="50" BorderThickness="5" BorderBrush="{Binding TxtColor}" Background="{Binding TxtColor}"/>
-                <Label Margin="15,5,0,0" Foreground="{DynamicResource ForegroundBrush}" Content="{Binding TxtColor}" FontSize="10"/>
+                <Label Margin="15,5,0,0" Foreground="{DynamicResource MenuLblHeadFG}" Content="{Binding TxtColor}" FontSize="10"/>
                 <ListBox
             HorizontalAlignment="Right"
             VerticalAlignment="Center"

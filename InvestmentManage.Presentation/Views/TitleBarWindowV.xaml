@@ -15,7 +15,7 @@
     </UserControl.DataContext>
 
     <Grid 
-        Background="{DynamicResource MaterialDesignPaper}"
+        Background="{DynamicResource MainBG}"
         Opacity=".9">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>

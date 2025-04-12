@@ -8,6 +8,7 @@ using System.ComponentModel;
 using MaterialDesignThemes.Wpf;
 using System.Windows.Media;
 using System.Windows.Controls;
+using System.Windows;
 
 
 namespace InvestmentManage.Presentation.Helpers.ThemeH
@@ -43,23 +44,23 @@ namespace InvestmentManage.Presentation.Helpers.ThemeH
 
         static public void ChangeDarkMode(bool isDark)
         {
-   
-            var paletteHelper = new PaletteHelper();
-            Theme theme = paletteHelper.GetTheme();
-            if (isDark)
-            {
-                theme.SetBaseTheme(BaseTheme.Dark);
-                theme.PrimaryMid = new ColorPair(Colors.Purple, Colors.White);
 
-                //TxtColor = Brushes.BurlyWood;
-            }
-            else
-            {
-                theme.SetBaseTheme(BaseTheme.Light);
-                // TxtColor = Brushes.Yellow;
-            }
+            //if (isDark)
+            //{
+            //    var uri = new Uri("Helpers/ThemeH/DarkTheme.xaml", UriKind.Relative);
+            //    ResourceDictionary theme = new ResourceDictionary() { Source = uri };
 
-            paletteHelper.SetTheme(theme);
+            //    Application.Current.Resources.MergedDictionaries.Clear();
+            //    Application.Current.Resources.MergedDictionaries.Add(theme);
+            //}
+            //else
+            //{
+                var uri = new Uri("Resources/Theme/LightPurpleTheme.xaml", UriKind.Relative);
+                ResourceDictionary theme = new ResourceDictionary() { Source = uri };
+
+                Application.Current.Resources.MergedDictionaries.Clear();
+                Application.Current.Resources.MergedDictionaries.Add(theme);
+           // }
         }
 
 

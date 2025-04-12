@@ -79,17 +79,11 @@ namespace InvestmentManage.Presentation.ViewModels
             if (isDark)
             {
                 ThemeSet.ChangeDarkMode(isDark);
-                
             }
             else
             {
                 ThemeSet.ChangeDarkMode(isDark);
-
-            }
-            
+            }       
         }
-
-
-
     }
 }

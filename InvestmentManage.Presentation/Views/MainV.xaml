@@ -24,7 +24,7 @@
 
         <Grid 
             Grid.Row="1"
-            Background="#F9FAFE">
+            Background="{DynamicResource MainBG}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="169*"/>
