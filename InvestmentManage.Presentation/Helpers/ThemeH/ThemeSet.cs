@@ -45,22 +45,22 @@ namespace InvestmentManage.Presentation.Helpers.ThemeH
         static public void ChangeDarkMode(bool isDark)
         {
 
-            //if (isDark)
-            //{
-            //    var uri = new Uri("Helpers/ThemeH/DarkTheme.xaml", UriKind.Relative);
-            //    ResourceDictionary theme = new ResourceDictionary() { Source = uri };
+            if (isDark)
+            {
+                var uri = new Uri("Resources/Theme/DarkPurpleTheme.xaml", UriKind.Relative);
+                ResourceDictionary theme = new ResourceDictionary() { Source = uri };
 
-            //    Application.Current.Resources.MergedDictionaries.Clear();
-            //    Application.Current.Resources.MergedDictionaries.Add(theme);
-            //}
-            //else
-            //{
+                Application.Current.Resources.MergedDictionaries.Clear();
+                Application.Current.Resources.MergedDictionaries.Add(theme);
+            }
+            else
+            {
                 var uri = new Uri("Resources/Theme/LightPurpleTheme.xaml", UriKind.Relative);
                 ResourceDictionary theme = new ResourceDictionary() { Source = uri };
 
                 Application.Current.Resources.MergedDictionaries.Clear();
                 Application.Current.Resources.MergedDictionaries.Add(theme);
-           // }
+            }
         }
 
 

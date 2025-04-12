@@ -32,13 +32,13 @@
             IsChecked="{Binding IsDarkMod}"
             Style="{StaticResource MaterialDesignFilterChipSecondaryOutlineCheckBox}"/>
             <StackPanel>
-                <Border Width="50" Height="50" BorderThickness="5" BorderBrush="{Binding TxtColor}" Background="{Binding TxtColor}"/>
                 <Label Margin="15,5,0,0" Foreground="{DynamicResource MenuLblHeadFG}" Content="{Binding TxtColor}" FontSize="10"/>
                 <ListBox
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             ItemsSource="{Binding Markets}"
             SelectedItem="{Binding SelectedMarket, Mode=TwoWay}"
+                    Foreground="{DynamicResource MenuLblCommonFG}"
             Style="{StaticResource MaterialDesignNavigationPrimaryListBox}">
 
                     <ListBox.ItemTemplate>
