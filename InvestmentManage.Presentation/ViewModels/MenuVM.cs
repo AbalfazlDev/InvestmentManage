@@ -27,17 +27,18 @@ namespace InvestmentManage.Presentation.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // پراپرتی برای نمایش متن "Menu"
         public string MenuItemList => LocalizationManager.GetString("MenuItemList");
+        public string DarkMode => LocalizationManager.GetString("DarkMode");
+        
 
-        // پراپرتی برای نمایش متن "Exit"
-       // public string ExitText => LocalizationManager.GetString("Exit");
+
+
 
         // پراپرتی برای نمایش FlowDirection (برای راست به چپ یا چپ به راست)
-        public FlowDirection AppFlowDirection =>
-            CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "fa"
-            ? FlowDirection.RightToLeft
-            : FlowDirection.LeftToRight;
+        //public FlowDirection AppFlowDirection =>
+        //    CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "fa"
+        //    ? FlowDirection.RightToLeft
+        //    : FlowDirection.LeftToRight;
 
         #endregion
         public Dictionary<MarketType, string> MarketIcons { get; set; }

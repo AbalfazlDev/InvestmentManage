@@ -34,7 +34,7 @@
                 Grid.Row="1"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Content="Dark Mode"
+                Content="{Binding DarkMode}"
                 IsChecked="{Binding IsDarkMod}"
                 Style="{StaticResource MaterialDesignFilterChipSecondaryOutlineCheckBox}"/>
             

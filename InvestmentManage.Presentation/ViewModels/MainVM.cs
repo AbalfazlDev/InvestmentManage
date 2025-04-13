@@ -10,11 +10,17 @@ using MaterialDesignColors;
 using MaterialDesignThemes.Wpf;
 using System.Windows.Media;
 using static MaterialDesignThemes.Wpf.Theme.ToolBar;
+using InvestmentManage.Presentation.Helpers.Language;
 
 namespace InvestmentManage.Presentation.ViewModels
 {
     internal class MainVM : NotifyPropertyChanged
     {
+        #region Application Language
+
+
+        #endregion
+
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         public MainVM()
         {
