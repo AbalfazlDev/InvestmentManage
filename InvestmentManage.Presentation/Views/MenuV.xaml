@@ -25,21 +25,29 @@
             Padding="5"
             Background="{DynamicResource MenuBG}">
         <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            
             <CheckBox
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Content="Dark Mode"
-            IsChecked="{Binding IsDarkMod}"
-            Style="{StaticResource MaterialDesignFilterChipSecondaryOutlineCheckBox}"/>
+                Grid.Row="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Content="Dark Mode"
+                IsChecked="{Binding IsDarkMod}"
+                Style="{StaticResource MaterialDesignFilterChipSecondaryOutlineCheckBox}"/>
+            
             <StackPanel>
                 <Label Margin="15,5,0,0" Foreground="{DynamicResource MenuLblHeadFG}" Content="{Binding MenuItemList}" FontSize="10"/>
                 <ListBox
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
-            ItemsSource="{Binding Markets}"
-            SelectedItem="{Binding SelectedMarket, Mode=TwoWay}"
+                    Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    ItemsSource="{Binding Markets}"
+                    SelectedItem="{Binding SelectedMarket, Mode=TwoWay}"
                     Foreground="{DynamicResource MenuLblCommonFG}"
-            Style="{StaticResource MaterialDesignNavigationPrimaryListBox}">
+                    Style="{StaticResource MaterialDesignNavigationPrimaryListBox}">
 
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -71,9 +79,7 @@
             <!--<TextBlock Text="{Binding SelectedMarket, Converter={StaticResource EnumConverter}}" 
            FontSize="16" Margin="10"/>-->
 
-            <Button VerticalAlignment="Bottom">
-                <md:PackIcon Kind="CogOutline" />
-            </Button>
+           
         </Grid>
     </Border>
 </UserControl>

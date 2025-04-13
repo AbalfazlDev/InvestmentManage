@@ -9,6 +9,8 @@ namespace InvestmentManage.Domain.Model.MarketCategory
 {
     public class MarketTypeM
     {
+        private string _txtSetting = "تنظیمات";
+
         public enum MarketType
         {
             [Description("بورس اوراق بهادار")]
@@ -22,6 +24,9 @@ namespace InvestmentManage.Domain.Model.MarketCategory
 
             [Description("بورس انرژی")]
             EnergyExchange,
+
+            [Description("تنظیمات")]
+            Setting,
 
             
         }
