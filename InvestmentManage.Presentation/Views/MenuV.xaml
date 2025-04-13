@@ -32,7 +32,7 @@
             IsChecked="{Binding IsDarkMod}"
             Style="{StaticResource MaterialDesignFilterChipSecondaryOutlineCheckBox}"/>
             <StackPanel>
-                <Label Margin="15,5,0,0" Foreground="{DynamicResource MenuLblHeadFG}" Content="{Binding TxtColor}" FontSize="10"/>
+                <Label Margin="15,5,0,0" Foreground="{DynamicResource MenuLblHeadFG}" Content="{Binding MenuItemList}" FontSize="10"/>
                 <ListBox
             HorizontalAlignment="Right"
             VerticalAlignment="Center"

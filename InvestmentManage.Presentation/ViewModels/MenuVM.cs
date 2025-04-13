@@ -14,11 +14,32 @@ using InvestmentManage.Presentation.Helpers;
 using static InvestmentManage.Domain.Model.MarketCategory.MarketTypeM;
 using InvestmentManage.Presentation.Helpers.ThemeH;
 using System.Windows;
+using System.Globalization;
+using InvestmentManage.Presentation.Views;
+using InvestmentManage.Presentation.Helpers.Language;
 
 namespace InvestmentManage.Presentation.ViewModels
 {
     internal class MenuVM : NotifyPropertyChanged
     {
+
+        #region Application Language
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        // پراپرتی برای نمایش متن "Menu"
+        public string MenuItemList => LocalizationManager.GetString("MenuItemList");
+
+        // پراپرتی برای نمایش متن "Exit"
+       // public string ExitText => LocalizationManager.GetString("Exit");
+
+        // پراپرتی برای نمایش FlowDirection (برای راست به چپ یا چپ به راست)
+        public FlowDirection AppFlowDirection =>
+            CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "fa"
+            ? FlowDirection.RightToLeft
+            : FlowDirection.LeftToRight;
+
+        #endregion
         public Dictionary<MarketType, string> MarketIcons { get; set; }
 
         public MenuVM()
@@ -79,11 +100,16 @@ namespace InvestmentManage.Presentation.ViewModels
             if (isDark)
             {
                 ThemeSet.ChangeDarkMode(isDark);
+                LocalizationManager.SetLanguageT("fa");
             }
             else
             {
                 ThemeSet.ChangeDarkMode(isDark);
-            }       
+                LocalizationManager.SetLanguageT("en");
+            }
+
+           
+
         }
     }
 }

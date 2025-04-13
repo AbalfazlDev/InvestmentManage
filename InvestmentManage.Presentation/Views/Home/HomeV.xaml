@@ -22,6 +22,7 @@
             Grid.Row="0"
             Margin="20,10,0,10"
             Content="{Binding WellcomeUser}"
+            Foreground="{DynamicResource CommonLblFG}"
             Style="{StaticResource MaterialDesignOutlineChip}">          
             <md:Chip.Icon>
                 <Image Source="C:\Users\abalf\Downloads\Abalfazl.jpg"/>

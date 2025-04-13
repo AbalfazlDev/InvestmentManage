@@ -29,4 +29,28 @@
     <Resource Include="Resources\Symbol\SVG\User.svg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Resources\Language\EnLan.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EnLan.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Language\FaLan.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FaLan.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Language\EnLan.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EnLan.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Language\FaLan.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FaLan.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
