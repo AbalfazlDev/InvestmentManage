@@ -11,7 +11,7 @@
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="800"
-             d:DesignWidth="100">
+             d:DesignWidth="250">
     <UserControl.DataContext>
         <vmmenu:MenuVM/>
     </UserControl.DataContext>
@@ -24,7 +24,7 @@
     <Border CornerRadius="20"
             Padding="5"
             Background="{DynamicResource MenuBG}">
-        <StackPanel >
+        <Grid >
             <CheckBox
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
@@ -66,9 +66,14 @@
 
 
                 </ListBox>
+                
             </StackPanel>
             <!--<TextBlock Text="{Binding SelectedMarket, Converter={StaticResource EnumConverter}}" 
            FontSize="16" Margin="10"/>-->
-        </StackPanel>
+
+            <Button VerticalAlignment="Bottom">
+                <md:PackIcon Kind="CogOutline" />
+            </Button>
+        </Grid>
     </Border>
 </UserControl>
