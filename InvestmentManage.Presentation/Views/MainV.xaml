@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:viewhome="clr-namespace:InvestmentManage.Presentation.Views.Home"
+        xmlns:viewSetting="clr-namespace:InvestmentManage.Presentation.Views.Setting"
         Title="MainV" 
         Height="450" 
         Width="700"
@@ -27,13 +28,14 @@
             Background="{DynamicResource MainBG}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="169*"/>
-                <ColumnDefinition Width="298*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <local:MenuV Margin="20,20,20,20" Grid.Column="0" />
+            <local:MenuV  Margin="20,20,20,20" Grid.Column="0" />
 
-            <viewhome:HomeV Grid.Column="1" Margin="10,20,10,20" Grid.ColumnSpan="2"/>
+            <viewhome:HomeV  Grid.Column="1" Margin="10,20,10,20" />
+
+            <viewSetting:MainSettingV Grid.Column="1" Margin="10,20,10,20"/>
 
             <!--<md:Chip
             Content="Crowd funding list"
