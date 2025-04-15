@@ -20,5 +20,14 @@ namespace InvestmentManage.Domain.Model
             Farsi,
             English
         }
+
+        public enum FontSizeType
+        {
+            Small,
+            Medium,
+            Large,
+            ExtraLarge
+        }
+
     }
 }

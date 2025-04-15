@@ -98,9 +98,9 @@ namespace InvestmentManage.Presentation.ViewModels
                     SelectedView = new HomeV();
                     break;
                 case MarketType.Setting:
-                    SelectedView = _mainSettingView;
-                    SelectedView.DataContext = MainSettingviewModel;
-                    //IsSettingView = true;
+                    //SelectedView = _mainSettingView;
+                    //SelectedView.DataContext = MainSettingviewModel;
+                    IsSettingView = true;
                     break;
                 default:
                     SelectedView = null;

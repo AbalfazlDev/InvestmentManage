@@ -11,7 +11,7 @@
     <!--<UserControl.DataContext>
         <viewmodel:MainSettingVM/>
     </UserControl.DataContext>-->
-    <Grid>
+    <Grid Background="{DynamicResource MainBG}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -27,13 +27,17 @@
                 CornerRadius="15">
             <DockPanel>
                 <Label 
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="20,0,0,0"
-                        Content="{Binding LblFontHead}" 
-                        FontSize="20"/>
-                <ListBox 
-                        VerticalAlignment="Center">
+                    Background="{DynamicResource MainBG}"
+                    Foreground="{DynamicResource CommonLblFG}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="20,0,0,0"
+                    Content="{Binding LblFontSize}" 
+                    FontSize="20"/>
+                <ListBox
+                    Background="{DynamicResource MainBG}"
+                    Foreground="{DynamicResource CommonLblFG}"
+                    VerticalAlignment="Center">
                     <ListBoxItem>15</ListBoxItem>
                     <ListBoxItem>18</ListBoxItem>
                     <ListBoxItem>20</ListBoxItem>
@@ -51,15 +55,19 @@
         <Border
             Grid.Row="1"
             Margin="10"
-            Padding="10"
+            Padding="10"         
             BorderBrush="{DynamicResource BorderColor}"
             BorderThickness="1"
             CornerRadius="15">
             <DockPanel>
                 <Label 
+                    Background="{DynamicResource MainBG}"
+                    Foreground="{DynamicResource CommonLblFG}"
                     FontSize="20"
                     Content="{Binding LblLanguage}"/>
                 <ListBox
+                    Background="{DynamicResource MainBG}"
+                    Foreground="{DynamicResource CommonLblFG}"
                     ItemsSource="{Binding LBLanguage}"
                     SelectedItem="{Binding SelectedLanguage}">
                     <ListBox.ItemsPanel >

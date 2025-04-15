@@ -15,14 +15,14 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
 {
     public class MainSettingVM : NotifyPropertyChanged
     {
-        private string _lblFontHead;
+        private string _lblFontSize;
 
-        public string LblFontHead
+        public string LblFontSize
         {
-            get { return _lblFontHead; }
+            get { return _lblFontSize; }
             set
             {
-                _lblFontHead = value;
+                _lblFontSize = value;
                 OnPropertyChanged();
             }
         }
@@ -68,7 +68,7 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
 
         public void ResetLanguage()
         {
-            LblFontHead = LocalizationManager.GetString("LblFontHead") + " : ";
+            LblFontSize = LocalizationManager.GetString("LblFontHead") + " : ";
             LblLanguage = LocalizationManager.GetString("LblLanguage") + " : ";
         }
     }
