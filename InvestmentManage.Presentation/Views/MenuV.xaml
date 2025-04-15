@@ -33,7 +33,7 @@
                 Grid.Row="1"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Content="{x:Static lang:MainVM.MyProperty}"
+                Content="{Binding DarkMode,UpdateSourceTrigger=PropertyChanged}"
                 IsChecked="{Binding IsDarkMod}"
                 Style="{StaticResource MaterialDesignFilterChipSecondaryOutlineCheckBox}"/>
 

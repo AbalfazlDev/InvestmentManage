@@ -17,6 +17,7 @@ using static InvestmentManage.Domain.Model.MarketCategory.MarketTypeM;
 using InvestmentManage.Presentation.Views;
 using InvestmentManage.Presentation.Views.Home;
 using System.Collections.ObjectModel;
+using InvestmentManage.Presentation.ViewModels.Setting;
 
 namespace InvestmentManage.Presentation.ViewModels
 {
@@ -27,14 +28,33 @@ namespace InvestmentManage.Presentation.ViewModels
 
         #endregion
         public static MenuVM MenuviewModel { get; set; }
-        public static string MyProperty { get; set; }
+        public static MenuV Menuview { get; set; }
+        public static MainSettingVM MainSettingviewModel { get; set; }
+        private static MainSettingV _mainSettingView { get; set; }
+        
+        private bool _isSettingView;
+
+        public bool IsSettingView
+        {
+            get { return _isSettingView; }
+            set { _isSettingView = value;
+                OnPropertyChanged();
+            }
+        }
+
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         public MainVM()
         {
             ChipCFList = new RelayCommand(rightDrawerHost);
             MenuviewModel = new MenuVM();
+            Menuview = new MenuV();
+            MainSettingviewModel = new MainSettingVM();
+            _mainSettingView = new MainSettingV();
+            _mainSettingView.DataContext = MainSettingviewModel;
             MenuviewModel.OnItemSelected = LoadView;
-            MyProperty = "dfdf";
+            MainSettingviewModel.ResetLanguage();
+
+
         }
 
         private UserControl _selectedView;
@@ -52,13 +72,16 @@ namespace InvestmentManage.Presentation.ViewModels
 
         public void LoadView(MarketType item)
         {
+            MainSettingviewModel.ResetLanguage();
             switch (item)
             {
                 case MarketType.Home:
                     SelectedView = new HomeV();
                     break;
                 case MarketType.Setting:
-                    SelectedView = new MainSettingV();
+                    SelectedView = _mainSettingView;
+                    SelectedView.DataContext = MainSettingviewModel;
+                    //IsSettingView = true;
                     break;
                 default:
                     SelectedView = null;

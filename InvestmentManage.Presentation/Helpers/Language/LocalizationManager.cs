@@ -46,19 +46,19 @@ namespace InvestmentManage.Presentation.Helpers.Language
 
 
            // ری‌لود پنجره فعلی برای اعمال تغییرات
-            var currentWindow = Application.Current.MainWindow;
+            //var currentWindow = Application.Current.MainWindow;
 
-            // ایجاد پنجره جدید (MainV.xaml)
-            var newWindow = (Window)Activator.CreateInstance(typeof(MainV));
+            //// ایجاد پنجره جدید (MainV.xaml)
+            //var newWindow = (Window)Activator.CreateInstance(typeof(MainV));
 
-            // تنظیم پنجره جدید به عنوان پنجره اصلی
-            Application.Current.MainWindow = newWindow;
+            //// تنظیم پنجره جدید به عنوان پنجره اصلی
+            //Application.Current.MainWindow = newWindow;
 
-            // نمایش پنجره جدید
-            newWindow.Show();
+            //// نمایش پنجره جدید
+            //newWindow.Show();
 
-            // بستن پنجره قبلی
-            currentWindow.Close();
+            //// بستن پنجره قبلی
+            //currentWindow.Close();
 
         }
 

@@ -29,10 +29,21 @@ namespace InvestmentManage.Presentation.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string MenuItemList => LocalizationManager.GetString("MenuItemList");
-        public string DarkMode => LocalizationManager.GetString("DarkMode");
+        //public string DarkMode = LocalizationManager.GetString("DarkMode");
 
+        private string _darkMode;
 
+        public string DarkMode
+        {
+            get { return _darkMode; }
+            set
+            {
+                _darkMode = value;
+                OnPropertyChanged(nameof(DarkMode));
+            }
+        }
 
+     
 
 
         // پراپرتی برای نمایش FlowDirection (برای راست به چپ یا چپ به راست)
@@ -47,8 +58,8 @@ namespace InvestmentManage.Presentation.ViewModels
         public MenuVM()
         {
             Markets = new ObservableCollection<MarketType>(Enum.GetValues(typeof(MarketType)).Cast<MarketType>());
-             Markets = new ObservableCollection<MarketType>(
-             Enum.GetValues(typeof(MarketType)).Cast<MarketType>());
+            Markets = new ObservableCollection<MarketType>(
+            Enum.GetValues(typeof(MarketType)).Cast<MarketType>());
             TxtColor = Brushes.Red;
         }
 
@@ -56,7 +67,7 @@ namespace InvestmentManage.Presentation.ViewModels
 
         public List<string> MenuItems { get; set; }
 
-        
+
 
         private MarketType _selectedMarket;
         public MarketType SelectedMarket
@@ -83,6 +94,7 @@ namespace InvestmentManage.Presentation.ViewModels
 
         //public ObservableCollection<MarketType> Items { get; set; }
         public Action<MarketType> OnItemSelected { get; set; }
+        //public Action<bool> IsSettingView {  get; set; }
 
         //private MarketType _selectedItem;
         //public MarketType SelectedItem
@@ -102,7 +114,8 @@ namespace InvestmentManage.Presentation.ViewModels
 
         public void LBMarketTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            OnItemSelected.Invoke(SelectedMarket) ;
+            OnItemSelected.Invoke(SelectedMarket);
+            
         }
 
         public bool IsDarkMod
@@ -119,14 +132,18 @@ namespace InvestmentManage.Presentation.ViewModels
             {
                 ThemeSet.ChangeDarkMode(isDark);
                 LocalizationManager.SetLanguageT("fa");
+                DarkMode = LocalizationManager.GetString("DarkMode");
             }
             else
             {
                 ThemeSet.ChangeDarkMode(isDark);
                 LocalizationManager.SetLanguageT("en");
+                DarkMode = LocalizationManager.GetString("DarkMode");
             }
 
-
+        }
+        private void resetLanguage()
+        {
 
         }
     }

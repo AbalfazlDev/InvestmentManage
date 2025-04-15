@@ -6,21 +6,78 @@
              xmlns:local="clr-namespace:InvestmentManage.Presentation.Views.Setting"
              xmlns:viewmodel="clr-namespace:InvestmentManage.Presentation.ViewModels.Setting"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="400">
-    <UserControl.DataContext>
+             >
+    <!--<UserControl.DataContext>
         <viewmodel:MainSettingVM/>
-    </UserControl.DataContext>
+    </UserControl.DataContext>-->
     <Grid>
-        <Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border 
+                Grid.Row="0"
+                Margin="10"
+                Padding="10"
+                BorderBrush="{DynamicResource BorderColor}"
+                BorderThickness="1"
+                CornerRadius="15">
+            <DockPanel>
+                <Label 
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="20,0,0,0"
+                        Content="{Binding LblFontHead}" 
+                        FontSize="20"/>
+                <ListBox 
+                        VerticalAlignment="Center">
+                    <ListBoxItem>15</ListBoxItem>
+                    <ListBoxItem>18</ListBoxItem>
+                    <ListBoxItem>20</ListBoxItem>
+                    <ListBoxItem>25</ListBoxItem>
+
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </ListBox>
+            </DockPanel>
+        </Border>
+
+        <Border
+            Grid.Row="1"
+            Margin="10"
+            Padding="10"
+            BorderBrush="{DynamicResource BorderColor}"
+            BorderThickness="1"
+            CornerRadius="15">
+            <DockPanel>
+                <Label 
+                    FontSize="20"
+                    Content="{Binding LblLanguage}"/>
+                <ListBox>
+                    
+                </ListBox>
+            </DockPanel>
+        </Border>
+
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>-->
 
-        <ListView
+        <!--<ListView
             Grid.Column="0"
+            FontSize="25"
+            Foreground="{DynamicResource CommonLblFG}"
+            Background="{DynamicResource MainBG}"
             ItemsSource="{Binding LVSettingItems}">
             
-        </ListView>
-          
+        </ListView>-->
+
+
     </Grid>
 </UserControl>
