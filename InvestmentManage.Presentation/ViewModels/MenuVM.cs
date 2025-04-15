@@ -81,19 +81,19 @@ namespace InvestmentManage.Presentation.ViewModels
             }
         }
 
-        public ObservableCollection<MarketType> Items { get; set; }
+        //public ObservableCollection<MarketType> Items { get; set; }
         public Action<MarketType> OnItemSelected { get; set; }
 
-        private MarketType _selectedItem;
-        public MarketType SelectedItem
-        {
-            get => _selectedItem;
-            set
-            {
-                _selectedItem = value;
-                OnItemSelected?.Invoke(_selectedItem); // فراخوانی اکشن
-            }
-        }
+        //private MarketType _selectedItem;
+        //public MarketType SelectedItem
+        //{
+        //    get => _selectedItem;
+        //    set
+        //    {
+        //        _selectedItem = value;
+        //        OnItemSelected?.Invoke(_selectedItem); 
+        //    }
+        //}
 
         public void LBMarketTypes_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -102,7 +102,7 @@ namespace InvestmentManage.Presentation.ViewModels
 
         public void LBMarketTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            OnItemSelected.Invoke(SelectedMarket) ;
         }
 
         public bool IsDarkMod
