@@ -43,7 +43,7 @@ namespace InvestmentManage.Presentation.ViewModels
             }
         }
 
-     
+
 
 
         // پراپرتی برای نمایش FlowDirection (برای راست به چپ یا چپ به راست)
@@ -60,7 +60,7 @@ namespace InvestmentManage.Presentation.ViewModels
             Markets = new ObservableCollection<MarketType>(Enum.GetValues(typeof(MarketType)).Cast<MarketType>());
             Markets = new ObservableCollection<MarketType>(
             Enum.GetValues(typeof(MarketType)).Cast<MarketType>());
-            TxtColor = Brushes.Red;
+            ResetLanguage();
         }
 
         public ObservableCollection<MarketType> Markets { get; set; }
@@ -77,18 +77,6 @@ namespace InvestmentManage.Presentation.ViewModels
             {
                 _selectedMarket = value;
                 OnPropertyChanged(nameof(SelectedMarket));
-            }
-        }
-
-        private Brush _txtColor;
-
-        public Brush TxtColor
-        {
-            get { return _txtColor; }
-            set
-            {
-                _txtColor = value;
-                OnPropertyChanged();
             }
         }
 
@@ -115,7 +103,7 @@ namespace InvestmentManage.Presentation.ViewModels
         public void LBMarketTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             OnItemSelected.Invoke(SelectedMarket);
-            
+
         }
 
         public bool IsDarkMod
@@ -126,25 +114,11 @@ namespace InvestmentManage.Presentation.ViewModels
             }
         }
 
-        private void darkMod(bool isDark)
-        {
-            if (isDark)
-            {
-                ThemeSet.ChangeDarkMode(isDark);
-                LocalizationManager.SetLanguageT("fa");
-                DarkMode = LocalizationManager.GetString("DarkMode");
-            }
-            else
-            {
-                ThemeSet.ChangeDarkMode(isDark);
-                LocalizationManager.SetLanguageT("en");
-                DarkMode = LocalizationManager.GetString("DarkMode");
-            }
+        private void darkMod(bool isDark) => ThemeSet.ChangeDarkMode(isDark);
 
-        }
-        private void resetLanguage()
+        public void ResetLanguage()
         {
-
+            DarkMode = LocalizationManager.GetString("DarkMode");
         }
     }
 }

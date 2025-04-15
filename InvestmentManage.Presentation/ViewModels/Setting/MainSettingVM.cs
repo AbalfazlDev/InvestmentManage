@@ -4,7 +4,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Markup;
+using InvestmentManage.Domain.Model;
 using InvestmentManage.Presentation.Helpers;
 using InvestmentManage.Presentation.Helpers.Language;
 using static InvestmentManage.Domain.Model.MarketCategory.MarketTypeM;
@@ -38,23 +40,36 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
 
         public MainSettingVM()
         {
-            LVSettingItems = new ObservableCollection<SettingItems>(Enum.GetValues(typeof(SettingItems)).Cast<SettingItems>());
+            LVSettingItems = new ObservableCollection<EnumM.SettingItems>(Enum.GetValues(typeof(EnumM.SettingItems)).Cast<EnumM.SettingItems>());
+            LBLanguage = new ObservableCollection<EnumM.LanguageList>(Enum.GetValues(typeof(EnumM.LanguageList)).Cast<EnumM.LanguageList>());
+            SelectedLanguage = EnumM.LanguageList.English;
             ResetLanguage();
         }
-        public ObservableCollection<SettingItems> LVSettingItems { get; set; }
+        public ObservableCollection<EnumM.SettingItems> LVSettingItems { get; set; }
+        public ObservableCollection<EnumM.LanguageList> LBLanguage { get; set; }
+        public Action<EnumM.LanguageList> OnLanguageSelected { get; set; }
+        private EnumM.LanguageList _selectedLanguage;
 
-        public enum SettingItems
+        public EnumM.LanguageList SelectedLanguage
         {
-            Font,
-            Theme,
-            Databases,
-            Language
+            get { return _selectedLanguage; }
+            set
+            {
+                _selectedLanguage = value;
+                OnPropertyChanged(nameof(SelectedLanguage));
+            }
+        }
+
+
+        public void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            OnLanguageSelected.Invoke(SelectedLanguage);
         }
 
         public void ResetLanguage()
         {
-            LblFontHead = LocalizationManager.GetString("LblFontHead");
-            LblLanguage = LocalizationManager.GetString("LblLanguage");
+            LblFontHead = LocalizationManager.GetString("LblFontHead") + " : ";
+            LblLanguage = LocalizationManager.GetString("LblLanguage") + " : ";
         }
     }
 }

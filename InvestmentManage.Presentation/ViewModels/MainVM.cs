@@ -18,6 +18,7 @@ using InvestmentManage.Presentation.Views;
 using InvestmentManage.Presentation.Views.Home;
 using System.Collections.ObjectModel;
 using InvestmentManage.Presentation.ViewModels.Setting;
+using InvestmentManage.Domain.Model;
 
 namespace InvestmentManage.Presentation.ViewModels
 {
@@ -31,13 +32,15 @@ namespace InvestmentManage.Presentation.ViewModels
         public static MenuV Menuview { get; set; }
         public static MainSettingVM MainSettingviewModel { get; set; }
         private static MainSettingV _mainSettingView { get; set; }
-        
+
         private bool _isSettingView;
 
         public bool IsSettingView
         {
             get { return _isSettingView; }
-            set { _isSettingView = value;
+            set
+            {
+                _isSettingView = value;
                 OnPropertyChanged();
             }
         }
@@ -52,6 +55,7 @@ namespace InvestmentManage.Presentation.ViewModels
             _mainSettingView = new MainSettingV();
             _mainSettingView.DataContext = MainSettingviewModel;
             MenuviewModel.OnItemSelected = LoadView;
+            MainSettingviewModel.OnLanguageSelected = ChangeLanguage;
             MainSettingviewModel.ResetLanguage();
 
 
@@ -68,7 +72,22 @@ namespace InvestmentManage.Presentation.ViewModels
             }
         }
 
+        private void ChangeLanguage(EnumM.LanguageList language)
+        {
+            switch (language)
+            {
+                case EnumM.LanguageList.English:
+                    LocalizationManager.SetLanguageT("en");
+                    break;
 
+                case EnumM.LanguageList.Farsi:
+                    LocalizationManager.SetLanguageT("fa");
+                    break;
+
+            }
+            MainSettingviewModel.ResetLanguage();
+            MenuviewModel.ResetLanguage();
+        }
 
         public void LoadView(MarketType item)
         {
