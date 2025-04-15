@@ -27,12 +27,14 @@ namespace InvestmentManage.Presentation.ViewModels
 
         #endregion
         public static MenuVM MenuviewModel { get; set; }
+        public static string MyProperty { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         public MainVM()
         {
             ChipCFList = new RelayCommand(rightDrawerHost);
             MenuviewModel = new MenuVM();
             MenuviewModel.OnItemSelected = LoadView;
+            MyProperty = "dfdf";
         }
 
         private UserControl _selectedView;

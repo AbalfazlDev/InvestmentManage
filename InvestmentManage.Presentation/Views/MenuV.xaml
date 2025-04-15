@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:InvestmentManage.Presentation.Views" 
              xmlns:vmmenu="clr-namespace:InvestmentManage.Presentation.ViewModels"
              xmlns:vmthemeset="clr-namespace:InvestmentManage.Presentation.Helpers.ThemeH"
+             xmlns:lang="clr-namespace:InvestmentManage.Presentation.ViewModels"
              xmlns:helpers="clr-namespace:InvestmentManage.Presentation.Helpers"
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
@@ -32,7 +33,7 @@
                 Grid.Row="1"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Content="{Binding DarkMode}"
+                Content="{x:Static lang:MainVM.MyProperty}"
                 IsChecked="{Binding IsDarkMod}"
                 Style="{StaticResource MaterialDesignFilterChipSecondaryOutlineCheckBox}"/>
 
