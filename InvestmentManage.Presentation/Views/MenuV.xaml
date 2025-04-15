@@ -12,9 +12,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="800"
              d:DesignWidth="250">
-    <UserControl.DataContext>
-        <vmmenu:MenuVM/>
-    </UserControl.DataContext>
+   
     <UserControl.Resources>
         <helpers:EnumToDescriptionConverter x:Key="EnumConverter"/>
         <helpers:MarketIconConverter x:Key="MarketIconConverter"/>

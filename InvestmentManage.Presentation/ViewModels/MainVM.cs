@@ -26,7 +26,7 @@ namespace InvestmentManage.Presentation.ViewModels
 
 
         #endregion
-        public MenuVM MenuviewModel { get; set; }
+        public static MenuVM MenuviewModel { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         public MainVM()
         {
@@ -46,7 +46,6 @@ namespace InvestmentManage.Presentation.ViewModels
             }
         }
 
-        
 
 
         public void LoadView(MarketType item)
