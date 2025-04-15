@@ -29,7 +29,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
-            
+
             <CheckBox
                 Grid.Row="1"
                 HorizontalAlignment="Stretch"
@@ -37,12 +37,12 @@
                 Content="{Binding DarkMode}"
                 IsChecked="{Binding IsDarkMod}"
                 Style="{StaticResource MaterialDesignFilterChipSecondaryOutlineCheckBox}"/>
-            
+
             <StackPanel>
                 <Label Margin="15,5,0,0" Foreground="{DynamicResource MenuLblHeadFG}" Content="{Binding MenuItemList}" FontSize="10"/>
                 <ListBox
                     Grid.Row="1"
-                    HorizontalAlignment="Right"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     ItemsSource="{Binding Markets}"
                     SelectedItem="{Binding SelectedMarket, Mode=TwoWay}"
@@ -52,13 +52,13 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="5">
-                                <!-- آیکون -->
+                                <!-- Icon -->
                                 <Image Source="{Binding Path=., Converter={StaticResource MarketIconConverter}}" 
-                       Width="30" Height="30" Margin="5"/>
+                                     Width="30" Height="30" Margin="5"/>
 
-                                <!-- نام بازار -->
-                                <TextBlock Text="{Binding Path=., Converter={StaticResource EnumConverter}}" 
-                           VerticalAlignment="Center" FontSize="14"/>
+                                <!--Text -->
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=., Converter={StaticResource EnumConverter}}" 
+                                    VerticalAlignment="Center" FontSize="14"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -74,12 +74,12 @@
 
 
                 </ListBox>
-                
+
             </StackPanel>
             <!--<TextBlock Text="{Binding SelectedMarket, Converter={StaticResource EnumConverter}}" 
            FontSize="16" Margin="10"/>-->
 
-           
+
         </Grid>
     </Border>
 </UserControl>
