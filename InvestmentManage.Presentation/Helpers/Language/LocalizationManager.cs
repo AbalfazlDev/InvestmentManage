@@ -28,6 +28,11 @@ namespace InvestmentManage.Presentation.Helpers.Language
                 _resourceManager = new ResourceManager("InvestmentManage.Presentation.Resources.Language.FaLan", typeof(LocalizationManager).Assembly);
             }
 
+            if (cultureCode == "en")
+            {
+                _resourceManager = new ResourceManager("InvestmentManage.Presentation.Resources.Language.EnLan", typeof(LocalizationManager).Assembly);
+            }
+
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary
             {
                 Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml")

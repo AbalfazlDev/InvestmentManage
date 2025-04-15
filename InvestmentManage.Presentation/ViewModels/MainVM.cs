@@ -10,15 +10,59 @@ using MaterialDesignColors;
 using MaterialDesignThemes.Wpf;
 using System.Windows.Media;
 using static MaterialDesignThemes.Wpf.Theme.ToolBar;
+using InvestmentManage.Presentation.Helpers.Language;
+using System.Windows.Controls;
+using InvestmentManage.Presentation.Views.Setting;
+using static InvestmentManage.Domain.Model.MarketCategory.MarketTypeM;
+using InvestmentManage.Presentation.Views;
+using InvestmentManage.Presentation.Views.Home;
+using System.Collections.ObjectModel;
 
 namespace InvestmentManage.Presentation.ViewModels
 {
     internal class MainVM : NotifyPropertyChanged
     {
+        #region Application Language
+
+
+        #endregion
+        public MenuVM MenuviewModel { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         public MainVM()
         {
             ChipCFList = new RelayCommand(rightDrawerHost);
+            MenuviewModel = new MenuVM();
+            MenuviewModel.OnItemSelected = LoadView;
+        }
+
+        private UserControl _selectedView;
+        public UserControl SelectedView
+        {
+            get => _selectedView;
+            set
+            {
+                _selectedView = value;
+                OnPropertyChanged(nameof(SelectedView));
+            }
+        }
+
+        
+
+
+        public void LoadView(MarketType item)
+        {
+            switch (item)
+            {
+                case MarketType.Home:
+                    SelectedView = new HomeV();
+                    break;
+                case MarketType.Setting:
+                    SelectedView = new MainSettingV();
+                    break;
+                default:
+                    SelectedView = null;
+                    break;
+            }
         }
 
         public void rightDrawerHost(object obj)

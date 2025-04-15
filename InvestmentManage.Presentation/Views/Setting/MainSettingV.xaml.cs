@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace InvestmentManage.Presentation.Views
+namespace InvestmentManage.Presentation.Views.Setting
 {
     /// <summary>
-    /// Interaction logic for SettingV.xaml
+    /// Interaction logic for MainSettingV.xaml
     /// </summary>
-    public partial class SettingV : UserControl
+    public partial class MainSettingV : UserControl
     {
-        public SettingV()
+        public MainSettingV()
         {
             InitializeComponent();
         }

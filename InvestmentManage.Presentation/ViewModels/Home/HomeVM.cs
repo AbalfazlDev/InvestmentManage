@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InvestmentManage.Presentation.Helpers.Language;
 
 namespace InvestmentManage.Presentation.ViewModels.Home
 {
     class HomeVM
     {
-        #region 
-        string userName = "Abalfazl";
+
+        #region Application Language
+
+        public string LblWelcomeUser => LocalizationManager.GetString("TxtWelcome");
+
         #endregion
-        public string WellcomeUser { get; set; }
+
+
 
         public HomeVM()
         {
-            WellcomeUser = "Good Evening " +  userName;
         }
 
     }

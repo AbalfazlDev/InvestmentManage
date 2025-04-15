@@ -21,7 +21,7 @@
         <md:Chip
             Grid.Row="0"
             Margin="20,10,0,10"
-            Content="{Binding WellcomeUser}"
+            Content="{Binding LblWelcomeUser}"
             Foreground="{DynamicResource CommonLblFG}"
             Style="{StaticResource MaterialDesignOutlineChip}">          
             <md:Chip.Icon>

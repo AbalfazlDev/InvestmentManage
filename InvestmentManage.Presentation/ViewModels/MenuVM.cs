@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using InvestmentManage.Presentation.Helpers;
 using static InvestmentManage.Domain.Model.MarketCategory.MarketTypeM;
 using InvestmentManage.Presentation.Helpers.ThemeH;
+using InvestmentManage.Presentation.ViewModels;
 using System.Windows;
 using System.Globalization;
 using InvestmentManage.Presentation.Views;
@@ -27,17 +28,18 @@ namespace InvestmentManage.Presentation.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // پراپرتی برای نمایش متن "Menu"
         public string MenuItemList => LocalizationManager.GetString("MenuItemList");
+        public string DarkMode => LocalizationManager.GetString("DarkMode");
 
-        // پراپرتی برای نمایش متن "Exit"
-       // public string ExitText => LocalizationManager.GetString("Exit");
+
+
+
 
         // پراپرتی برای نمایش FlowDirection (برای راست به چپ یا چپ به راست)
-        public FlowDirection AppFlowDirection =>
-            CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "fa"
-            ? FlowDirection.RightToLeft
-            : FlowDirection.LeftToRight;
+        //public FlowDirection AppFlowDirection =>
+        //    CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "fa"
+        //    ? FlowDirection.RightToLeft
+        //    : FlowDirection.LeftToRight;
 
         #endregion
         public Dictionary<MarketType, string> MarketIcons { get; set; }
@@ -45,12 +47,16 @@ namespace InvestmentManage.Presentation.ViewModels
         public MenuVM()
         {
             Markets = new ObservableCollection<MarketType>(Enum.GetValues(typeof(MarketType)).Cast<MarketType>());
-            Markets = new ObservableCollection<MarketType>(
-            Enum.GetValues(typeof(MarketType)).Cast<MarketType>());
+             Markets = new ObservableCollection<MarketType>(
+             Enum.GetValues(typeof(MarketType)).Cast<MarketType>());
             TxtColor = Brushes.Red;
         }
 
         public ObservableCollection<MarketType> Markets { get; set; }
+
+        public List<string> MenuItems { get; set; }
+
+        
 
         private MarketType _selectedMarket;
         public MarketType SelectedMarket
@@ -75,6 +81,19 @@ namespace InvestmentManage.Presentation.ViewModels
             }
         }
 
+        public ObservableCollection<MarketType> Items { get; set; }
+        public Action<MarketType> OnItemSelected { get; set; }
+
+        private MarketType _selectedItem;
+        public MarketType SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                _selectedItem = value;
+                OnItemSelected?.Invoke(_selectedItem); // فراخوانی اکشن
+            }
+        }
 
         public void LBMarketTypes_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -83,7 +102,6 @@ namespace InvestmentManage.Presentation.ViewModels
 
         public void LBMarketTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
 
         }
 
@@ -108,7 +126,7 @@ namespace InvestmentManage.Presentation.ViewModels
                 LocalizationManager.SetLanguageT("en");
             }
 
-           
+
 
         }
     }
