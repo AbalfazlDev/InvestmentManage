@@ -26,10 +26,7 @@ namespace InvestmentManage.Presentation.ViewModels
 
         #region Application Language
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public string MenuItemList => ChangeLanguageManager.GetString("MenuItemList");
-        //public string DarkMode = LocalizationManager.GetString("DarkMode");
 
         private string _darkMode;
 
@@ -42,15 +39,6 @@ namespace InvestmentManage.Presentation.ViewModels
                 OnPropertyChanged(nameof(DarkMode));
             }
         }
-
-
-
-
-        // پراپرتی برای نمایش FlowDirection (برای راست به چپ یا چپ به راست)
-        //public FlowDirection AppFlowDirection =>
-        //    CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "fa"
-        //    ? FlowDirection.RightToLeft
-        //    : FlowDirection.LeftToRight;
 
         #endregion
         public Dictionary<MarketType, string> MarketIcons { get; set; }
@@ -80,20 +68,7 @@ namespace InvestmentManage.Presentation.ViewModels
             }
         }
 
-        //public ObservableCollection<MarketType> Items { get; set; }
         public Action<MarketType> OnItemSelected { get; set; }
-        //public Action<bool> IsSettingView {  get; set; }
-
-        //private MarketType _selectedItem;
-        //public MarketType SelectedItem
-        //{
-        //    get => _selectedItem;
-        //    set
-        //    {
-        //        _selectedItem = value;
-        //        OnItemSelected?.Invoke(_selectedItem); 
-        //    }
-        //}
 
         public void LBMarketTypes_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
