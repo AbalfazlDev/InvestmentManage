@@ -77,11 +77,11 @@ namespace InvestmentManage.Presentation.ViewModels
             switch (language)
             {
                 case EnumM.LanguageList.English:
-                    LocalizationManager.SetLanguageT("en");
+                    ChangeLanguageManager.SetLanguage("en");
                     break;
 
                 case EnumM.LanguageList.Farsi:
-                    LocalizationManager.SetLanguageT("fa");
+                    ChangeLanguageManager.SetLanguage("fa");
                     break;
 
             }

@@ -28,7 +28,7 @@ namespace InvestmentManage.Presentation.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string MenuItemList => LocalizationManager.GetString("MenuItemList");
+        public string MenuItemList => ChangeLanguageManager.GetString("MenuItemList");
         //public string DarkMode = LocalizationManager.GetString("DarkMode");
 
         private string _darkMode;
@@ -118,7 +118,7 @@ namespace InvestmentManage.Presentation.ViewModels
 
         public void ResetLanguage()
         {
-            DarkMode = LocalizationManager.GetString("DarkMode");
+            DarkMode = ChangeLanguageManager.GetString("DarkMode");
         }
     }
 }

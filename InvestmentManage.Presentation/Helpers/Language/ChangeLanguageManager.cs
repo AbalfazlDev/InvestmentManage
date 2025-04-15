@@ -10,27 +10,27 @@ using InvestmentManage.Presentation.Views;
 
 namespace InvestmentManage.Presentation.Helpers.Language
 {
-    public static class LocalizationManager
+    public static class ChangeLanguageManager
     {
         // یک متغیر برای ResourceManager
         private static ResourceManager _resourceManager;
 
-        static LocalizationManager()
+        static ChangeLanguageManager()
         {
             // بارگذاری منابع برای زبان پیش‌فرض
-            _resourceManager = new ResourceManager("InvestmentManage.Presentation.Resources.Language.EnLan", typeof(LocalizationManager).Assembly);
+            _resourceManager = new ResourceManager("InvestmentManage.Presentation.Resources.Language.EnLan", typeof(ChangeLanguageManager).Assembly);
         }
 
-        public static void SetLanguageT(string cultureCode)
+        public static void SetLanguage(string cultureCode)
         {
             if (cultureCode == "fa")
             {
-                _resourceManager = new ResourceManager("InvestmentManage.Presentation.Resources.Language.FaLan", typeof(LocalizationManager).Assembly);
+                _resourceManager = new ResourceManager("InvestmentManage.Presentation.Resources.Language.FaLan", typeof(ChangeLanguageManager).Assembly);
             }
 
             if (cultureCode == "en")
             {
-                _resourceManager = new ResourceManager("InvestmentManage.Presentation.Resources.Language.EnLan", typeof(LocalizationManager).Assembly);
+                _resourceManager = new ResourceManager("InvestmentManage.Presentation.Resources.Language.EnLan", typeof(ChangeLanguageManager).Assembly);
             }
 
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary
@@ -62,35 +62,24 @@ namespace InvestmentManage.Presentation.Helpers.Language
 
         }
 
-        public static void SetLanguage(string cultureCode)
+        public static void SetLanguageTT(string cultureCode)
         {
             var culture = new CultureInfo(cultureCode);
 
-            // تغییر زبان سیستم
             Thread.CurrentThread.CurrentUICulture = culture;
             Thread.CurrentThread.CurrentCulture = culture;
 
-            // ری‌لود پنجره فعلی برای اعمال تغییرات
             var currentWindow = Application.Current.MainWindow;
 
-            // ایجاد پنجره جدید (MainV.xaml)
             var newWindow = (Window)Activator.CreateInstance(typeof(MainV));
 
-            // تنظیم پنجره جدید به عنوان پنجره اصلی
             Application.Current.MainWindow = newWindow;
 
-            // نمایش پنجره جدید
             newWindow.Show();
 
-            // بستن پنجره قبلی
             currentWindow.Close();
         }
 
-        //public static string GetString(string key)
-        //{
-        //    return InvestmentManage.Presentation.Resources.Language.EnLan.ResourceManager
-        //        .GetString(key, CultureInfo.CurrentUICulture) ?? $"[{key}]";
-        //}
 
         public static string GetString(string key)
         {
@@ -99,17 +88,5 @@ namespace InvestmentManage.Presentation.Helpers.Language
         }
 
     }
-    //public static class LocalizationManager
-    //{
-
-    //    public static string GetString(string key)
-    //    {
-    //        return InvestmentManage.Presentation.Resources.Language.EnLan.ResourceManager
-    //            .GetString(key, CultureInfo.CurrentUICulture) ?? $"[{key}]";
-    //    }
-
-
-
-    //}
 
 }
