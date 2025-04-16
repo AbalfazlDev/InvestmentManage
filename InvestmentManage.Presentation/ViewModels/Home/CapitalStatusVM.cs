@@ -6,78 +6,101 @@ using System.Text;
 using System.Threading.Tasks;
 using LiveCharts.Wpf;
 using LiveCharts;
+using InvestmentManage.Presentation.Helpers;
+using System.Windows.Media;
+using System.Windows;
+using PropertyChanged;
 
 namespace InvestmentManage.Presentation.ViewModels.Home
 {
-    class CapitalStatusVM
+    [AddINotifyPropertyChangedInterface]
+    class CapitalStatusVM:NotifyPropertyChanged
     {
-        private SeriesCollection _seriesCollection;
+        //private SeriesCollection _seriesCollection;
 
-        public SeriesCollection SeriesCollection
+        //public SeriesCollection SeriesCollection
+        //{
+        //    get { return _seriesCollection; }
+        //    set
+        //    {
+        //        _seriesCollection = value;
+        //        OnPropertyChanged(nameof(SeriesCollection));
+        //    }
+        //}
+
+        public SeriesCollection SeriesCollection { get; set; }
+
+        public void LoadChartSeries()
         {
-            get { return _seriesCollection; }
-            set
+            // لود رنگ‌ها از Resource
+            var lineColor = Application.Current.Resources["CommonLblFG"] as Brush;
+            var fillColor = Application.Current.Resources["PrimeColor"] as Brush;
+
+            // ساختن نمودار
+            SeriesCollection = new SeriesCollection
+        {
+            new LineSeries
             {
-                _seriesCollection = value;
-                OnPropertyChanged(nameof(SeriesCollection));
+                Title = "نمودار",
+                Values = new ChartValues<double> { 3, 5, 2, 7, 6 },
+                Stroke = lineColor,       // رنگ خط
+                Fill = fillColor,         // رنگ پر شدن زیر نمودار
+                PointForeground = Brushes.White,
+                LineSmoothness = 0.3
             }
+        };
         }
 
         public CapitalStatusVM()
         {
+            LoadChartSeries();
             // Sample data for the chart
-            var values = new List<ChartData>
-            {
-                new ChartData { Category = "A", Value = 50 },
-                new ChartData { Category = "B", Value = 80 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },new ChartData { Category = "B", Value = 80 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },new ChartData { Category = "B", Value = 80 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },new ChartData { Category = "B", Value = 80 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 600 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },new ChartData { Category = "B", Value = 80 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },new ChartData { Category = "B", Value = 80 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },new ChartData { Category = "B", Value = 80 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "C", Value = 120 },
-                new ChartData { Category = "D", Value = 160 }
-            };
+            //var values = new List<ChartData>
+            //{
+            //    new ChartData { Category = "A", Value = 50 },
+            //    new ChartData { Category = "B", Value = 80 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },new ChartData { Category = "B", Value = 80 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },new ChartData { Category = "B", Value = 80 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },new ChartData { Category = "B", Value = 80 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 600 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },new ChartData { Category = "B", Value = 80 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },new ChartData { Category = "B", Value = 80 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },new ChartData { Category = "B", Value = 80 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "C", Value = 120 },
+            //    new ChartData { Category = "D", Value = 160 }
+            //};
 
             // Create the series for the bar chart
-            SeriesCollection = new SeriesCollection
-            {
-                new ColumnSeries
-                {
-                    Title = "Values",
-                    Values = new ChartValues<double>(values.ConvertAll(v => v.Value))
-                }
-            };
+            //SeriesCollection = new SeriesCollection
+            //{
+            //    new ColumnSeries
+            //    {
+            //        Title = "Values",
+            //        Values = new ChartValues<double>(values.ConvertAll(v => v.Value))
+            //    }
+            //};
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 
     // Class to represent the data

@@ -34,6 +34,7 @@
 
         <Button 
             Grid.Column="1"
+            Foreground="{DynamicResource PrimeColor}"
             Style="{StaticResource MaterialDesignFlatDarkButton}"
             Command="{Binding MinimizeWindowCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
@@ -42,6 +43,7 @@
 
         <Button
             Grid.Column="2"
+            Foreground="{DynamicResource PrimeColor}"
             Style="{StaticResource MaterialDesignFlatDarkButton}"
             Command="{Binding MaximizeWindowCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
@@ -50,6 +52,7 @@
 
         <Button 
             Grid.Column="3"
+            Foreground="{DynamicResource PrimeColor}"
             Style="{StaticResource MaterialDesignFlatDarkButton}"
             Command="{Binding CloseWindowCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}">

@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace InvestmentManage.Presentation.ViewModels.OTCMarket
+{
+    public class OTCMarketMainVM
+    {
+        public OTCMarketMainVM()
+        {
+
+        }
+    }
+}

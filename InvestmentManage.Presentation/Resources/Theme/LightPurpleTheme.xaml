@@ -4,8 +4,11 @@
     <SolidColorBrush x:Key="MainBG">#F9FAFE</SolidColorBrush>
     <SolidColorBrush x:Key="MenuLblCommonFG">#6B6D6C</SolidColorBrush>
     <SolidColorBrush x:Key="MenuLblHeadFG">#6A5DB5</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimeColor">#695CB4</SolidColorBrush>
     <SolidColorBrush x:Key="CommonLblFG">black</SolidColorBrush>
     <SolidColorBrush x:Key="BorderColor">#6B6D6C</SolidColorBrush>
+    <SolidColorBrush x:Key="ChartLineColor">#FFBB19C2</SolidColorBrush>
+    <SolidColorBrush x:Key="ChartFillColor">#FFBA4FBF</SolidColorBrush>
 
 
 

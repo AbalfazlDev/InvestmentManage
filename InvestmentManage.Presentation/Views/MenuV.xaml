@@ -26,8 +26,8 @@
         <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="60" />
-                <RowDefinition Height="60" />
+                <RowDefinition Height="62" />
+                <RowDefinition Height="62" />
             </Grid.RowDefinitions>
 
             <CheckBox

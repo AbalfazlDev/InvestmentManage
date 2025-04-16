@@ -63,7 +63,8 @@
                     Maximum="40" 
                     TickFrequency="1"
                     TickPlacement="None"
-                    IsEnabled="{Binding IsSliderFontSize}"
+                    Foreground="{DynamicResource PrimeColor}"
+                    IsEnabled="True"
                     Style="{StaticResource MaterialDesignDiscreteSlider}"
                     Value="{Binding FontSizeSlider, Mode=TwoWay}" >
                     <b:Interaction.Triggers>

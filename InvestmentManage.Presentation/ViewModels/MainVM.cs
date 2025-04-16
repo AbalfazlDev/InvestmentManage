@@ -22,6 +22,8 @@ using InvestmentManage.Domain.Model;
 using static InvestmentManage.Domain.Model.EnumM;
 using PropertyChanged;
 using InvestmentManage.Presentation.ViewModels.Home;
+using InvestmentManage.Presentation.Views.OTCMarket;
+using InvestmentManage.Presentation.ViewModels.OTCMarket;
 
 namespace InvestmentManage.Presentation.ViewModels
 {
@@ -36,6 +38,8 @@ namespace InvestmentManage.Presentation.ViewModels
         public static MenuV Menuview { get; set; }
         public static MainSettingVM MainSettingviewModel { get; set; }
         private static MainSettingV _mainSettingView { get; set; }
+        public static OTCMarketMainV OTCMarketMainView { get; set; }
+        private static OTCMarketMainVM OTCMarketMainViewModel { get; set; }
         private HomeV HomeView { get; set; }
         public HomeVM HomeViewModel { get; set; }
 
@@ -48,6 +52,9 @@ namespace InvestmentManage.Presentation.ViewModels
             HomeViewModel = new HomeVM();
             Menuview = new MenuV();
             HomeView = new HomeV();
+            OTCMarketMainViewModel = new OTCMarketMainVM();
+            OTCMarketMainView = OTCMarketMainV();
+            OTCMarketMainView.DataContext = OTCMarketMainViewModel;
             MainSettingviewModel = new MainSettingVM();
             _mainSettingView = new MainSettingV();
             HomeView.DataContext = HomeViewModel;
@@ -57,8 +64,8 @@ namespace InvestmentManage.Presentation.ViewModels
             MainSettingviewModel.OnFontSizeChanged = ChangeFontSize;
             MainSettingviewModel.OnLanguageSelected = ChangeLanguage;
             MainSettingviewModel.ResetLanguage();
-
-
+            changeLbFontSize(FontSizeType.Medium);
+            LoadView(MenuType.Home);
         }
 
         public FlowDirection AppFlowDirection { get; set; } = FlowDirection.LeftToRight;
@@ -124,6 +131,7 @@ namespace InvestmentManage.Presentation.ViewModels
             }
             MainSettingviewModel.ResetLanguage();
             MenuviewModel.ResetLanguage();
+            HomeViewModel.ResetLanguage();
         }
 
         public void LoadView(MenuType item)

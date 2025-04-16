@@ -13,7 +13,7 @@ namespace InvestmentManage.Presentation.ViewModels.Home
 
         #region Application Language
 
-        public string LblWelcomeUser => LocalizationLanguage.GetString("TxtWelcome");
+        public string LblWelcomeUser {  get; set; } 
 
         #endregion
 
@@ -21,6 +21,15 @@ namespace InvestmentManage.Presentation.ViewModels.Home
 
         public HomeVM()
         {
+            ResetLanguage();
+        }
+
+
+
+
+        public void ResetLanguage()
+        {
+            LblWelcomeUser = LocalizationLanguage.GetString("TxtWelcome");
         }
 
     }

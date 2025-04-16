@@ -46,7 +46,7 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
         public Action<FontSizeType> OnFontSizeSelected { get; set; }
         public bool IsSliderFontSize { get; set; }
         public Action<int> OnFontSizeChanged { get; set; }
-        public FontSizeType SelectedFontSize { get; set; }
+        public FontSizeType SelectedFontSize { get; set; } = FontSizeType.Medium;
 
         public LanguageList SelectedLanguage { get; set; }
 
