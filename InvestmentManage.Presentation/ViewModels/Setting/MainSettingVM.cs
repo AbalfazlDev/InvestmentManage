@@ -15,6 +15,20 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
 {
     public class MainSettingVM : NotifyPropertyChanged
     {
+        private EnumM.FontSizeType _selectedFontSize;
+
+        public EnumM.FontSizeType SelectedFontSize
+        {
+            get { return _selectedFontSize; }
+            set
+            {
+                _selectedFontSize = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<EnumM.FontSizeType> FontSizeItems {  get; set; }
+
         private string _lblFontSize;
 
         public string LblFontSize
@@ -43,6 +57,7 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
             LVSettingItems = new ObservableCollection<EnumM.SettingItems>(Enum.GetValues(typeof(EnumM.SettingItems)).Cast<EnumM.SettingItems>());
             LBLanguage = new ObservableCollection<EnumM.LanguageList>(Enum.GetValues(typeof(EnumM.LanguageList)).Cast<EnumM.LanguageList>());
             SelectedLanguage = EnumM.LanguageList.English;
+            FontSizeItems = new ObservableCollection<EnumM.FontSizeType>(Enum.GetValues(typeof(EnumM.FontSizeType)).Cast<EnumM.FontSizeType>());
             ResetLanguage();
         }
         public ObservableCollection<EnumM.SettingItems> LVSettingItems { get; set; }

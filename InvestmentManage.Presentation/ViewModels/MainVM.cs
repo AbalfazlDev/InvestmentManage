@@ -101,6 +101,7 @@ namespace InvestmentManage.Presentation.ViewModels
                     //SelectedView = _mainSettingView;
                     //SelectedView.DataContext = MainSettingviewModel;
                     IsSettingView = true;
+                    SelectedView = new HomeV();
                     break;
                 default:
                     SelectedView = null;

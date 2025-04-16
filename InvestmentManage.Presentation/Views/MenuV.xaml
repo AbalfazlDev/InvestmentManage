@@ -52,11 +52,13 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <!-- Icon -->
-                                <Image Source="{Binding Path=., Converter={StaticResource MarketIconConverter}}" 
-                                     Width="30" Height="30" Margin="5"/>
+                                <!--<Image Source="{Binding Path=., Converter={StaticResource MarketIconConverter}}" 
+                                     Width="30" Height="30" Margin="5"/>-->
 
                                 <!--Text -->
-                                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=., Converter={StaticResource EnumConverter}}" 
+                                <!--<TextBlock HorizontalAlignment="Center" Text="{Binding Path=., Converter={StaticResource EnumConverter}}" 
+                                    VerticalAlignment="Center" FontSize="14"/>-->
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=., Converter={StaticResource MarketTypeToResxConverter}}" 
                                     VerticalAlignment="Center" FontSize="14"/>
                             </StackPanel>
                         </DataTemplate>

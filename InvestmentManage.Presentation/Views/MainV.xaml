@@ -10,8 +10,8 @@
         xmlns:viewhome="clr-namespace:InvestmentManage.Presentation.Views.Home"
         xmlns:viewSetting="clr-namespace:InvestmentManage.Presentation.Views.Setting"
         Title="MainV" 
-        Height="450" 
-        Width="700"
+        Height="550" 
+        Width="750"
         AllowsTransparency="True"
         Background="Transparent"
         WindowStyle="None"  >

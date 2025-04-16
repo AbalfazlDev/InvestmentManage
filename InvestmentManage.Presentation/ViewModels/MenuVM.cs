@@ -46,12 +46,22 @@ namespace InvestmentManage.Presentation.ViewModels
         public MenuVM()
         {
             Markets = new ObservableCollection<MarketType>(Enum.GetValues(typeof(MarketType)).Cast<MarketType>());
-            Markets = new ObservableCollection<MarketType>(
-            Enum.GetValues(typeof(MarketType)).Cast<MarketType>());
             ResetLanguage();
+            MarketsLang = new ObservableCollection<string>() { "Hello" };
+            MarketsLang.Add("Hello") ;
         }
 
         public ObservableCollection<MarketType> Markets { get; set; }
+        //public ObservableCollection<string> MarketsLang { get; set; } = new ObservableCollection<string>();
+        private ObservableCollection<string> myVar;
+
+        public ObservableCollection<string> MarketsLang
+        {
+            get { return myVar; }
+            set { myVar = value;
+                OnPropertyChanged();
+            }
+        }
 
         public List<string> MenuItems { get; set; }
 

@@ -22,6 +22,7 @@
                 Grid.Row="0"
                 Margin="10"
                 Padding="10"
+            HorizontalAlignment="Center"
                 BorderBrush="{DynamicResource BorderColor}"
                 BorderThickness="1"
                 CornerRadius="15">
@@ -37,11 +38,9 @@
                 <ListBox
                     Background="{DynamicResource MainBG}"
                     Foreground="{DynamicResource CommonLblFG}"
+                    ItemsSource="{Binding FontSizeItems}"
+                    SelectedItem="{Binding SelectedFontSize}"
                     VerticalAlignment="Center">
-                    <ListBoxItem>15</ListBoxItem>
-                    <ListBoxItem>18</ListBoxItem>
-                    <ListBoxItem>20</ListBoxItem>
-                    <ListBoxItem>25</ListBoxItem>
 
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -55,7 +54,8 @@
         <Border
             Grid.Row="1"
             Margin="10"
-            Padding="10"         
+            Padding="10"   
+            HorizontalAlignment="Center"
             BorderBrush="{DynamicResource BorderColor}"
             BorderThickness="1"
             CornerRadius="15">
