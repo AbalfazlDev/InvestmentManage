@@ -24,12 +24,16 @@ using InvestmentManage.Presentation.Resources.Symbol;
 
 namespace InvestmentManage.Presentation.ViewModels
 {
-    internal class MenuVM : NotifyPropertyChanged
+    internal class MenuVM : FontSizeModel
     {
 
         #region Application Language
-
+        public FontFamily AppFontFamily { get; set; }
+        public int AppFontSize { get; set; }
+        public RelayCommand BtnSettings { get; set; }
         public string MenuItemList => LocalizationLanguage.GetString("MenuItemList");
+        public string LblSettings { get; set; }
+        public string LblSettingsIcon => SegoeIcons.Settings;
 
         private string _darkMode;
 
@@ -39,7 +43,6 @@ namespace InvestmentManage.Presentation.ViewModels
             set
             {
                 _darkMode = value;
-                OnPropertyChanged(nameof(DarkMode));
             }
         }
 
@@ -52,10 +55,15 @@ namespace InvestmentManage.Presentation.ViewModels
 
             //MarketsLang = new ObservableCollection<string>() { "Hello" };
             //MarketsLang.Add("Hello") ;
+            AppFontSize = 10;
+            BtnSettings = new RelayCommand(FuncBtnSettings);
             MenuItemst = new ObservableCollection<MenuItemModel>();
             ResetLanguage();
         }
-
+        private void FuncBtnSettings(object sender)
+        {
+            OnItemSelected.Invoke(MenuType.Settings);
+        }
         //public ObservableCollection<MarketType> Markets { get; set; }
         ////public ObservableCollection<string> MarketsLang { get; set; } = new ObservableCollection<string>();
         //private ObservableCollection<string> myVar;
@@ -109,9 +117,11 @@ namespace InvestmentManage.Presentation.ViewModels
         public void ResetLanguage()
         {
             DarkMode = LocalizationLanguage.GetString("DarkMode");
+            LblSettings = LocalizationLanguage.GetString("Setting");
             MenuItemst.Clear();
             foreach (MenuType type in Enum.GetValues(typeof(MenuType)))
             {
+                if (type == MenuType.Settings) break;
                 MenuItemst.Add(new MenuItemModel
                 {
                     Type = type,
@@ -151,9 +161,7 @@ namespace InvestmentManage.Presentation.ViewModels
                 if (_selectedMenuType != value)
                 {
                     _selectedMenuType = value;
-                    OnPropertyChanged();
 
-                    // اینجا واکنش نشون بده
                 }
             }
         }

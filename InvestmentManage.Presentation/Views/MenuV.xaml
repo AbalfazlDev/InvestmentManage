@@ -13,7 +13,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="800"
              d:DesignWidth="250">
-   
+
     <UserControl.Resources>
         <helpers:EnumToDescriptionConverter x:Key="EnumConverter"/>
         <helpers:MarketIconConverter x:Key="MarketIconConverter"/>
@@ -26,17 +26,47 @@
         <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="60" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
 
             <CheckBox
-                Grid.Row="1"
+                Grid.Row="2"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
+                FontSize="{Binding AppFontSize}"
+                FontFamily="{Binding AppFontFamily}"
+                Foreground="{DynamicResource MenuLblCommonFG}"
                 Content="{Binding DarkMode,UpdateSourceTrigger=PropertyChanged}"
                 IsChecked="{Binding IsDarkMod}"
                 Style="{StaticResource MaterialDesignFilterChipSecondaryOutlineCheckBox}"/>
 
+            <Button 
+                Grid.Row="1"
+                Margin="5"
+                FontSize="{Binding AppFontSize}"
+                FontFamily="{Binding AppFontFamily}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Command="{Binding BtnSettings}"
+                Foreground="{DynamicResource MenuLblCommonFG}"
+                Style="{StaticResource MaterialDesignFlatSecondaryDarkButton}">
+                <Button.Content>
+                    <StackPanel
+                        HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            Margin="5,0,5,0"
+                            FontFamily="Segoe MDL2 Assets"
+                            Text="{Binding LblSettingsIcon}"/>
+                        <TextBlock
+                            Margin="5,0,5,0"
+                            FontFamily="Calibri"
+                            Text="{Binding LblSettings}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            
             <StackPanel>
                 <Label Margin="15,5,0,0" Foreground="{DynamicResource MenuLblHeadFG}" Content="{Binding MenuItemList}" FontSize="10"/>
                 <!--<ListBox
@@ -48,21 +78,27 @@
                     Foreground="{DynamicResource MenuLblCommonFG}"
                     Style="{StaticResource MaterialDesignNavigationPrimaryListBox}">
 
-                    --><!--<ListBox.ItemTemplate>
+                    -->
+                <!--<ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="5">
-                                --><!-- Icon -->
-                                <!--<Image Source="{Binding Path=., Converter={StaticResource MarketIconConverter}}" 
+                                -->
+                <!-- Icon -->
+                <!--<Image Source="{Binding Path=., Converter={StaticResource MarketIconConverter}}" 
                                      Width="30" Height="30" Margin="5"/>-->
 
-                                <!--Text --><!--
+                <!--Text -->
+                <!--
                                 <TextBlock HorizontalAlignment="Center" Text="{Binding Path=., Converter={StaticResource EnumConverter}}" 
                                     VerticalAlignment="Center" FontSize="14"/>
-                                --><!--<TextBlock HorizontalAlignment="Center" Text="{Binding Path=., Converter={StaticResource MarketTypeToResxConverter}}" 
-                                    VerticalAlignment="Center" FontSize="14"/>--><!--
+                                -->
+                <!--<TextBlock HorizontalAlignment="Center" Text="{Binding Path=., Converter={StaticResource MarketTypeToResxConverter}}" 
+                                    VerticalAlignment="Center" FontSize="14"/>-->
+                <!--
                             </StackPanel>
                         </DataTemplate>
-                    </ListBox.ItemTemplate>--><!--
+                    </ListBox.ItemTemplate>-->
+                <!--
 
                     <b:Interaction.Triggers>
                         <b:EventTrigger EventName="SelectionChanged">
@@ -111,7 +147,7 @@
             </StackPanel>
             <!--<TextBlock Text="{Binding SelectedMarket, Converter={StaticResource EnumConverter}}" 
            FontSize="16" Margin="10"/>-->
-
+           
 
         </Grid>
     </Border>

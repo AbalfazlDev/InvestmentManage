@@ -20,10 +20,12 @@ using System.Collections.ObjectModel;
 using InvestmentManage.Presentation.ViewModels.Setting;
 using InvestmentManage.Domain.Model;
 using static InvestmentManage.Domain.Model.EnumM;
+using PropertyChanged;
 
 namespace InvestmentManage.Presentation.ViewModels
 {
-    internal class MainVM : NotifyPropertyChanged
+    [AddINotifyPropertyChangedInterface]
+    internal class MainVM 
     {
         #region Application Language
 
@@ -34,54 +36,53 @@ namespace InvestmentManage.Presentation.ViewModels
         public static MainSettingVM MainSettingviewModel { get; set; }
         private static MainSettingV _mainSettingView { get; set; }
 
-        private bool _isSettingView;
-
-        public bool IsSettingView
-        {
-            get { return _isSettingView; }
-            set
-            {
-                _isSettingView = value;
-                OnPropertyChanged();
-            }
-        }
+        public bool IsSettingView { get; set; }
 
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         public MainVM()
         {
-            ChipCFList = new RelayCommand(rightDrawerHost);
             MenuviewModel = new MenuVM();
             Menuview = new MenuV();
             MainSettingviewModel = new MainSettingVM();
             _mainSettingView = new MainSettingV();
             _mainSettingView.DataContext = MainSettingviewModel;
             MenuviewModel.OnItemSelected = LoadView;
+            MainSettingviewModel.OnFontSizeSelected = changeLbFontSize;
             MainSettingviewModel.OnLanguageSelected = ChangeLanguage;
             MainSettingviewModel.ResetLanguage();
-            
+
 
         }
-        private FlowDirection _appFlowDirection = FlowDirection.LeftToRight;
-        public FlowDirection AppFlowDirection
+
+        public FlowDirection AppFlowDirection { get; set; } = FlowDirection.LeftToRight;
+
+        public UserControl SelectedView { get; set; }
+
+        private void changeLbFontSize(FontSizeType fontSize)
         {
-            get => _appFlowDirection;
-            set
+            switch (fontSize)
             {
-                _appFlowDirection = value;
-                OnPropertyChanged();
+                case FontSizeType.Small:
+                    ChangeFontSize(10);
+                    break;
+                case FontSizeType.Medium:
+                    ChangeFontSize(15);
+                    break;
+                case FontSizeType.Large:
+                    ChangeFontSize(20);
+                    break;
+                case FontSizeType.ExtraLarge:
+                    ChangeFontSize(27);
+                    break;
+
             }
         }
-
-
-        private UserControl _selectedView;
-        public UserControl SelectedView
+        private void ChangeFontSize(int normalFontSize)
         {
-            get => _selectedView;
-            set
-            {
-                _selectedView = value;
-                OnPropertyChanged(nameof(SelectedView));
-            }
+            //SmalFontApp = (normalFontSize * 7) / 10;
+            //MediumFontApp = normalFontSize;
+            //LargeFontApp = (normalFontSize * 12) / 10;
+            //MenuviewModel.
         }
 
         private void ChangeLanguage(EnumM.LanguageList language)
@@ -90,12 +91,12 @@ namespace InvestmentManage.Presentation.ViewModels
             {
                 case EnumM.LanguageList.English:
                     LocalizationLanguage.SetLanguage("en");
-                    AppFlowDirection= FlowDirection.LeftToRight;
+                    AppFlowDirection = FlowDirection.LeftToRight;
                     break;
 
                 case EnumM.LanguageList.Farsi:
                     LocalizationLanguage.SetLanguage("fa");
-                    AppFlowDirection= FlowDirection.RightToLeft;
+                    AppFlowDirection = FlowDirection.RightToLeft;
                     break;
 
             }
@@ -123,27 +124,13 @@ namespace InvestmentManage.Presentation.ViewModels
             }
         }
 
-        public void rightDrawerHost(object obj)
-        {
-            IsRightDrawerHost = !IsRightDrawerHost;
-        }
 
         public void ListBox_Selected(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private bool _isRightDrawerHost = false;
 
-        public bool IsRightDrawerHost
-        {
-            get { return _isRightDrawerHost; }
-            set
-            {
-                _isRightDrawerHost = value;
-                OnPropertyChanged();
-            }
-        }
 
         private RelayCommand _chipCFList;
 
