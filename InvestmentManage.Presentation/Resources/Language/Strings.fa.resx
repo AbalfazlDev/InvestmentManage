@@ -118,39 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CommoditiesExchange" xml:space="preserve">
-    <value>Commodities exchange</value>
+    <value>بورس کالا</value>
   </data>
   <data name="DarkMode" xml:space="preserve">
-    <value>Dark mode</value>
+    <value>حالت تیره</value>
   </data>
   <data name="EnergyExchange" xml:space="preserve">
-    <value>Energy exchange</value>
+    <value>بورس انرژی</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="LblFontHead" xml:space="preserve">
-    <value>Font</value>
-  </data>
-  <data name="LblFontSize" xml:space="preserve">
-    <value>Font Size</value>
-  </data>
-  <data name="LblLanguage" xml:space="preserve">
-    <value>Language</value>
+    <value>خانه</value>
   </data>
   <data name="MenuItemList" xml:space="preserve">
-    <value>Menu</value>
+    <value>منو</value>
   </data>
   <data name="OTCMarket" xml:space="preserve">
-    <value>OTC Market</value>
+    <value>فرابورس</value>
   </data>
   <data name="Setting" xml:space="preserve">
-    <value>Settings</value>
+    <value>تنظیمات</value>
   </data>
   <data name="StockExchange" xml:space="preserve">
-    <value>Stock Exchange</value>
+    <value>بورس اوراق بهادر</value>
   </data>
   <data name="TxtWelcome" xml:space="preserve">
-    <value>Hi Abalfazl</value>
+    <value>سلام ابوالفضل</value>
   </data>
 </root>

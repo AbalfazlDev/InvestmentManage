@@ -12,7 +12,7 @@ namespace InvestmentManage.Presentation.ViewModels.Home
 
         #region Application Language
 
-        public string LblWelcomeUser => ChangeLanguageManager.GetString("TxtWelcome");
+        public string LblWelcomeUser => LocalizationLanguage.GetString("TxtWelcome");
 
         #endregion
 

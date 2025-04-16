@@ -56,10 +56,10 @@
                                      Width="30" Height="30" Margin="5"/>-->
 
                                 <!--Text -->
-                                <!--<TextBlock HorizontalAlignment="Center" Text="{Binding Path=., Converter={StaticResource EnumConverter}}" 
-                                    VerticalAlignment="Center" FontSize="14"/>-->
-                                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=., Converter={StaticResource MarketTypeToResxConverter}}" 
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=., Converter={StaticResource EnumConverter}}" 
                                     VerticalAlignment="Center" FontSize="14"/>
+                                <!--<TextBlock HorizontalAlignment="Center" Text="{Binding Path=., Converter={StaticResource MarketTypeToResxConverter}}" 
+                                    VerticalAlignment="Center" FontSize="14"/>-->
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

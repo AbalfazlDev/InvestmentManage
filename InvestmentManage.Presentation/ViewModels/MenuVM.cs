@@ -26,7 +26,7 @@ namespace InvestmentManage.Presentation.ViewModels
 
         #region Application Language
 
-        public string MenuItemList => ChangeLanguageManager.GetString("MenuItemList");
+        public string MenuItemList => LocalizationLanguage.GetString("MenuItemList");
 
         private string _darkMode;
 
@@ -103,7 +103,7 @@ namespace InvestmentManage.Presentation.ViewModels
 
         public void ResetLanguage()
         {
-            DarkMode = ChangeLanguageManager.GetString("DarkMode");
+            DarkMode = LocalizationLanguage.GetString("DarkMode");
         }
     }
 }

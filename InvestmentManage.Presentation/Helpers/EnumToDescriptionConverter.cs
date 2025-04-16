@@ -25,7 +25,7 @@ namespace InvestmentManage.Presentation.Helpers
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
 
-            return ChangeLanguageManager.GetString($"{value}");
+            return LocalizationLanguage.GetString($"{value}");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
