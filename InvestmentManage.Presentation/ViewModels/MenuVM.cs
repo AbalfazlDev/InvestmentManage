@@ -18,6 +18,9 @@ using System.Windows;
 using System.Globalization;
 using InvestmentManage.Presentation.Views;
 using InvestmentManage.Presentation.Helpers.Language;
+using InvestmentManage.Domain.Model;
+using static InvestmentManage.Domain.Model.EnumM;
+using InvestmentManage.Presentation.Resources.Symbol;
 
 namespace InvestmentManage.Presentation.ViewModels
 {
@@ -45,40 +48,42 @@ namespace InvestmentManage.Presentation.ViewModels
 
         public MenuVM()
         {
-            Markets = new ObservableCollection<MarketType>(Enum.GetValues(typeof(MarketType)).Cast<MarketType>());
+            //Markets = new ObservableCollection<MarketType>(Enum.GetValues(typeof(MarketType)).Cast<MarketType>());
+
+            //MarketsLang = new ObservableCollection<string>() { "Hello" };
+            //MarketsLang.Add("Hello") ;
+            MenuItemst = new ObservableCollection<MenuItemModel>();
             ResetLanguage();
-            MarketsLang = new ObservableCollection<string>() { "Hello" };
-            MarketsLang.Add("Hello") ;
         }
 
-        public ObservableCollection<MarketType> Markets { get; set; }
-        //public ObservableCollection<string> MarketsLang { get; set; } = new ObservableCollection<string>();
-        private ObservableCollection<string> myVar;
+        //public ObservableCollection<MarketType> Markets { get; set; }
+        ////public ObservableCollection<string> MarketsLang { get; set; } = new ObservableCollection<string>();
+        //private ObservableCollection<string> myVar;
 
-        public ObservableCollection<string> MarketsLang
-        {
-            get { return myVar; }
-            set { myVar = value;
-                OnPropertyChanged();
-            }
-        }
+        //public ObservableCollection<string> MarketsLang
+        //{
+        //    get { return myVar; }
+        //    set { myVar = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
-        public List<string> MenuItems { get; set; }
+        //public List<string> MenuItems { get; set; }
 
 
 
-        private MarketType _selectedMarket;
-        public MarketType SelectedMarket
-        {
-            get => _selectedMarket;
-            set
-            {
-                _selectedMarket = value;
-                OnPropertyChanged(nameof(SelectedMarket));
-            }
-        }
+        //private MenuType _selectedMarket;
+        //public MenuType SelectedMarket
+        //{
+        //    get => _selectedMarket;
+        //    set
+        //    {
+        //        _selectedMarket = value;
+        //        OnPropertyChanged(nameof(SelectedMarket));
+        //    }
+        //}
 
-        public Action<MarketType> OnItemSelected { get; set; }
+        public Action<MenuType> OnItemSelected { get; set; }
 
         public void LBMarketTypes_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -87,7 +92,7 @@ namespace InvestmentManage.Presentation.ViewModels
 
         public void LBMarketTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            OnItemSelected.Invoke(SelectedMarket);
+            OnItemSelected.Invoke(SelectedMenuType);
 
         }
 
@@ -104,6 +109,75 @@ namespace InvestmentManage.Presentation.ViewModels
         public void ResetLanguage()
         {
             DarkMode = LocalizationLanguage.GetString("DarkMode");
+            MenuItemst.Clear();
+            foreach (MenuType type in Enum.GetValues(typeof(MenuType)))
+            {
+                MenuItemst.Add(new MenuItemModel
+                {
+                    Type = type,
+                    DisplayText = GetLocalizedText(type),
+                    Icon = GetMenuIcon(type)
+                });
+            }
         }
+
+        private string GetMenuIcon(MenuType type)
+        {
+            switch (type)
+            {
+                case MenuType.Home:
+                    return SegoeIcons.Home;
+                case MenuType.StockExchange:
+                    return SegoeIcons.StockExchange;
+                case MenuType.OTCMarket:
+                    return SegoeIcons.OTCMarket;
+                case MenuType.CommoditiesExchange:
+                    return SegoeIcons.CommoditiesExchange;
+                case MenuType.EnergyExchange:
+                    return SegoeIcons.EnergyExchange;
+                case MenuType.Settings:
+                    return SegoeIcons.Settings;
+
+            }
+            return SegoeIcons.LoadIssue;
+        }
+
+        private MenuType _selectedMenuType;
+        public MenuType SelectedMenuType
+        {
+            get => _selectedMenuType;
+            set
+            {
+                if (_selectedMenuType != value)
+                {
+                    _selectedMenuType = value;
+                    OnPropertyChanged();
+
+                    // اینجا واکنش نشون بده
+                }
+            }
+        }
+
+
+
+
+        public ObservableCollection<MenuItemModel> MenuItemst { get; set; }
+
+
+        private string GetLocalizedText(MenuType type)
+        {
+            // مثلا بر اساس زبان فعلی یا منطق دلخواه
+            return type switch
+            {
+                MenuType.Home => LocalizationLanguage.GetString("Home"),
+                MenuType.StockExchange => LocalizationLanguage.GetString("StockExchange"),
+                MenuType.OTCMarket => LocalizationLanguage.GetString("OTCMarket"),
+                MenuType.CommoditiesExchange => LocalizationLanguage.GetString("CommoditiesExchange"),
+                MenuType.EnergyExchange => LocalizationLanguage.GetString("EnergyExchange"),
+                MenuType.Settings => LocalizationLanguage.GetString("Setting"),
+                _ => type.ToString()
+            };
+        }
+
     }
 }

@@ -83,8 +83,8 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
 
         public void ResetLanguage()
         {
-            LblFontSize = LocalizationLanguage.GetString("LblFontHead") + " : ";
-            LblLanguage = LocalizationLanguage.GetString("LblLanguage") + " : ";
+            LblFontSize = LocalizationLanguage.GetString("LblFontHead") ;
+            LblLanguage = LocalizationLanguage.GetString("LblLanguage") ;
         }
     }
 }

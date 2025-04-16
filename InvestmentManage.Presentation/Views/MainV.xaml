@@ -12,6 +12,7 @@
         Title="MainV" 
         Height="550" 
         Width="750"
+        FlowDirection="{Binding AppFlowDirection}"
         AllowsTransparency="True"
         Background="Transparent"
         WindowStyle="None"  >

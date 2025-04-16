@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,24 @@ namespace InvestmentManage.Domain.Model
             Medium,
             Large,
             ExtraLarge
+        }
+
+        public enum MenuType
+        {
+            Home,
+            [Description("بورس اوراق بهادار")]
+            StockExchange,
+
+            [Description("فرابورس")]
+            OTCMarket,
+
+            [Description("بورس کالا")]
+            CommoditiesExchange,
+
+            [Description("بورس انرژی")]
+            EnergyExchange,
+            Settings
+
         }
 
     }
