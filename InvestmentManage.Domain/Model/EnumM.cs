@@ -27,7 +27,8 @@ namespace InvestmentManage.Domain.Model
             Small,
             Medium,
             Large,
-            ExtraLarge
+            ExtraLarge,
+            Custom
         }
 
         public enum MenuType

@@ -21,11 +21,12 @@ using InvestmentManage.Presentation.ViewModels.Setting;
 using InvestmentManage.Domain.Model;
 using static InvestmentManage.Domain.Model.EnumM;
 using PropertyChanged;
+using InvestmentManage.Presentation.ViewModels.Home;
 
 namespace InvestmentManage.Presentation.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    internal class MainVM 
+    internal class MainVM : FontSizeModel
     {
         #region Application Language
 
@@ -35,6 +36,8 @@ namespace InvestmentManage.Presentation.ViewModels
         public static MenuV Menuview { get; set; }
         public static MainSettingVM MainSettingviewModel { get; set; }
         private static MainSettingV _mainSettingView { get; set; }
+        private HomeV HomeView { get; set; }
+        public HomeVM HomeViewModel { get; set; }
 
         public bool IsSettingView { get; set; }
 
@@ -42,12 +45,16 @@ namespace InvestmentManage.Presentation.ViewModels
         public MainVM()
         {
             MenuviewModel = new MenuVM();
+            HomeViewModel = new HomeVM();
             Menuview = new MenuV();
+            HomeView = new HomeV();
             MainSettingviewModel = new MainSettingVM();
             _mainSettingView = new MainSettingV();
+            HomeView.DataContext = HomeViewModel;
             _mainSettingView.DataContext = MainSettingviewModel;
             MenuviewModel.OnItemSelected = LoadView;
             MainSettingviewModel.OnFontSizeSelected = changeLbFontSize;
+            MainSettingviewModel.OnFontSizeChanged = ChangeFontSize;
             MainSettingviewModel.OnLanguageSelected = ChangeLanguage;
             MainSettingviewModel.ResetLanguage();
 
@@ -63,15 +70,19 @@ namespace InvestmentManage.Presentation.ViewModels
             switch (fontSize)
             {
                 case FontSizeType.Small:
+                    //MainSettingviewModel.FontSizeSlider = 10;
                     ChangeFontSize(10);
                     break;
                 case FontSizeType.Medium:
+                    //MainSettingviewModel.FontSizeSlider = 15;
                     ChangeFontSize(15);
                     break;
                 case FontSizeType.Large:
+                    //MainSettingviewModel.FontSizeSlider = 20;
                     ChangeFontSize(20);
                     break;
                 case FontSizeType.ExtraLarge:
+                    //MainSettingviewModel.FontSizeSlider = 27;
                     ChangeFontSize(27);
                     break;
 
@@ -79,10 +90,21 @@ namespace InvestmentManage.Presentation.ViewModels
         }
         private void ChangeFontSize(int normalFontSize)
         {
-            //SmalFontApp = (normalFontSize * 7) / 10;
-            //MediumFontApp = normalFontSize;
-            //LargeFontApp = (normalFontSize * 12) / 10;
-            //MenuviewModel.
+            SmalFontApp = (normalFontSize * 7) / 10;
+            MediumFontApp = normalFontSize;
+            LargeFontApp = (normalFontSize * 12) / 10;
+
+            MenuviewModel.SmalFontApp = SmalFontApp;
+            MenuviewModel.MediumFontApp = MediumFontApp;
+            MenuviewModel.LargeFontApp = LargeFontApp;
+
+            MainSettingviewModel.SmalFontApp = SmalFontApp;
+            MainSettingviewModel.MediumFontApp = MediumFontApp;
+            MainSettingviewModel.LargeFontApp = LargeFontApp;
+
+            HomeViewModel.SmalFontApp = SmalFontApp;
+            HomeViewModel.MediumFontApp = MediumFontApp;
+            HomeViewModel.LargeFontApp = LargeFontApp;
         }
 
         private void ChangeLanguage(EnumM.LanguageList language)
@@ -110,13 +132,12 @@ namespace InvestmentManage.Presentation.ViewModels
             switch (item)
             {
                 case MenuType.Home:
-                    SelectedView = new HomeV();
+                    SelectedView = HomeView;
                     break;
                 case MenuType.Settings:
                     //SelectedView = _mainSettingView;
                     //SelectedView.DataContext = MainSettingviewModel;
                     IsSettingView = true;
-                    SelectedView = new HomeV();
                     break;
                 default:
                     SelectedView = null;
@@ -128,16 +149,6 @@ namespace InvestmentManage.Presentation.ViewModels
         public void ListBox_Selected(object sender, RoutedEventArgs e)
         {
 
-        }
-
-
-
-        private RelayCommand _chipCFList;
-
-        public RelayCommand ChipCFList
-        {
-            get { return _chipCFList; }
-            set { _chipCFList = value; }
         }
 
 

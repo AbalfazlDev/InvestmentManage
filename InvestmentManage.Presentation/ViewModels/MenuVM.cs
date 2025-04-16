@@ -21,13 +21,14 @@ using InvestmentManage.Presentation.Helpers.Language;
 using InvestmentManage.Domain.Model;
 using static InvestmentManage.Domain.Model.EnumM;
 using InvestmentManage.Presentation.Resources.Symbol;
+using PropertyChanged;
+
 
 namespace InvestmentManage.Presentation.ViewModels
 {
-    internal class MenuVM : FontSizeModel
+    [AddINotifyPropertyChangedInterface]
+    internal class MenuVM :FontSizeModel
     {
-
-        #region Application Language
         public FontFamily AppFontFamily { get; set; }
         public int AppFontSize { get; set; }
         public RelayCommand BtnSettings { get; set; }
@@ -35,18 +36,11 @@ namespace InvestmentManage.Presentation.ViewModels
         public string LblSettings { get; set; }
         public string LblSettingsIcon => SegoeIcons.Settings;
 
-        private string _darkMode;
 
-        public string DarkMode
-        {
-            get { return _darkMode; }
-            set
-            {
-                _darkMode = value;
-            }
-        }
 
-        #endregion
+        public string DarkMode { get; set; }
+
+
         public Dictionary<MarketType, string> MarketIcons { get; set; }
 
         public MenuVM()
@@ -64,32 +58,6 @@ namespace InvestmentManage.Presentation.ViewModels
         {
             OnItemSelected.Invoke(MenuType.Settings);
         }
-        //public ObservableCollection<MarketType> Markets { get; set; }
-        ////public ObservableCollection<string> MarketsLang { get; set; } = new ObservableCollection<string>();
-        //private ObservableCollection<string> myVar;
-
-        //public ObservableCollection<string> MarketsLang
-        //{
-        //    get { return myVar; }
-        //    set { myVar = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-
-        //public List<string> MenuItems { get; set; }
-
-
-
-        //private MenuType _selectedMarket;
-        //public MenuType SelectedMarket
-        //{
-        //    get => _selectedMarket;
-        //    set
-        //    {
-        //        _selectedMarket = value;
-        //        OnPropertyChanged(nameof(SelectedMarket));
-        //    }
-        //}
 
         public Action<MenuType> OnItemSelected { get; set; }
 
@@ -174,7 +142,6 @@ namespace InvestmentManage.Presentation.ViewModels
 
         private string GetLocalizedText(MenuType type)
         {
-            // مثلا بر اساس زبان فعلی یا منطق دلخواه
             return type switch
             {
                 MenuType.Home => LocalizationLanguage.GetString("Home"),

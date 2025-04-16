@@ -26,15 +26,15 @@
         <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
             </Grid.RowDefinitions>
 
             <CheckBox
                 Grid.Row="2"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                FontSize="{Binding AppFontSize}"
+                FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
                 FontFamily="{Binding AppFontFamily}"
                 Foreground="{DynamicResource MenuLblCommonFG}"
                 Content="{Binding DarkMode,UpdateSourceTrigger=PropertyChanged}"
@@ -44,7 +44,7 @@
             <Button 
                 Grid.Row="1"
                 Margin="5"
-                FontSize="{Binding AppFontSize}"
+                FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
                 FontFamily="{Binding AppFontFamily}"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
@@ -66,9 +66,13 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
-            
+
             <StackPanel>
-                <Label Margin="15,5,0,0" Foreground="{DynamicResource MenuLblHeadFG}" Content="{Binding MenuItemList}" FontSize="10"/>
+                <Label 
+                    Margin="15,5,0,0" 
+                    Foreground="{DynamicResource MenuLblHeadFG}"
+                    Content="{Binding MenuItemList}" 
+                    FontSize="{Binding SmalFontApp,UpdateSourceTrigger=PropertyChanged}"/>
                 <!--<ListBox
                     Grid.Row="1"
                     HorizontalAlignment="Center"
@@ -116,6 +120,7 @@
                     Grid.Row="1"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
+                    FontSize="{Binding MediumFontApp}"
                     Foreground="{DynamicResource MenuLblCommonFG}"
                     Style="{StaticResource MaterialDesignNavigationPrimaryListBox}"
                     ItemsSource="{Binding MenuItemst}"
@@ -124,13 +129,18 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="5">
-                                <TextBlock FontFamily="Segoe MDL2 Assets"
-                           Text="{Binding Icon}"
-                           FontSize="16"
-                           VerticalAlignment="Center"
-                           Margin="0,0,8,0"/>
-                                <TextBlock Text="{Binding DisplayText}"
-                           VerticalAlignment="Center"/>
+                                <Label
+                                    Foreground="{DynamicResource MenuLblCommonFG}"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    Content="{Binding Icon}"
+                                    FontSize="{Binding DataContext.MediumFontApp, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,8,0"/>
+                                <Label 
+                                    Foreground="{DynamicResource MenuLblCommonFG}"
+                                    FontSize="{Binding DataContext.MediumFontApp, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                    Content="{Binding DisplayText}"
+                                    VerticalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -143,7 +153,6 @@
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
                 </ListBox>
-
             </StackPanel>
             <!--<TextBlock Text="{Binding SelectedMarket, Converter={StaticResource EnumConverter}}" 
            FontSize="16" Margin="10"/>-->

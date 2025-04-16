@@ -24,5 +24,6 @@ namespace InvestmentManage.Presentation.Views.Setting
         {
             InitializeComponent();
         }
+
     }
 }
