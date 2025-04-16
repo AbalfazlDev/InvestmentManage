@@ -19,6 +19,7 @@ using InvestmentManage.Presentation.Views.Home;
 using System.Collections.ObjectModel;
 using InvestmentManage.Presentation.ViewModels.Setting;
 using InvestmentManage.Domain.Model;
+using static InvestmentManage.Domain.Model.EnumM;
 
 namespace InvestmentManage.Presentation.ViewModels
 {
@@ -57,9 +58,20 @@ namespace InvestmentManage.Presentation.ViewModels
             MenuviewModel.OnItemSelected = LoadView;
             MainSettingviewModel.OnLanguageSelected = ChangeLanguage;
             MainSettingviewModel.ResetLanguage();
-
+            
 
         }
+        private FlowDirection _appFlowDirection = FlowDirection.LeftToRight;
+        public FlowDirection AppFlowDirection
+        {
+            get => _appFlowDirection;
+            set
+            {
+                _appFlowDirection = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         private UserControl _selectedView;
         public UserControl SelectedView
@@ -77,11 +89,13 @@ namespace InvestmentManage.Presentation.ViewModels
             switch (language)
             {
                 case EnumM.LanguageList.English:
-                    ChangeLanguageManager.SetLanguage("en");
+                    LocalizationLanguage.SetLanguage("en");
+                    AppFlowDirection= FlowDirection.LeftToRight;
                     break;
 
                 case EnumM.LanguageList.Farsi:
-                    ChangeLanguageManager.SetLanguage("fa");
+                    LocalizationLanguage.SetLanguage("fa");
+                    AppFlowDirection= FlowDirection.RightToLeft;
                     break;
 
             }
@@ -89,15 +103,15 @@ namespace InvestmentManage.Presentation.ViewModels
             MenuviewModel.ResetLanguage();
         }
 
-        public void LoadView(MarketType item)
+        public void LoadView(MenuType item)
         {
             MainSettingviewModel.ResetLanguage();
             switch (item)
             {
-                case MarketType.Home:
+                case MenuType.Home:
                     SelectedView = new HomeV();
                     break;
-                case MarketType.Setting:
+                case MenuType.Settings:
                     //SelectedView = _mainSettingView;
                     //SelectedView.DataContext = MainSettingviewModel;
                     IsSettingView = true;

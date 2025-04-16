@@ -106,6 +106,15 @@ namespace InvestmentManage.Presentation.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Font Size.
+        /// </summary>
+        internal static string LblFontSize {
+            get {
+                return ResourceManager.GetString("LblFontSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         internal static string LblLanguage {

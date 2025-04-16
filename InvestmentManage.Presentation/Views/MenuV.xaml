@@ -39,7 +39,7 @@
 
             <StackPanel>
                 <Label Margin="15,5,0,0" Foreground="{DynamicResource MenuLblHeadFG}" Content="{Binding MenuItemList}" FontSize="10"/>
-                <ListBox
+                <!--<ListBox
                     Grid.Row="1"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
@@ -48,21 +48,21 @@
                     Foreground="{DynamicResource MenuLblCommonFG}"
                     Style="{StaticResource MaterialDesignNavigationPrimaryListBox}">
 
-                    <ListBox.ItemTemplate>
+                    --><!--<ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="5">
-                                <!-- Icon -->
+                                --><!-- Icon -->
                                 <!--<Image Source="{Binding Path=., Converter={StaticResource MarketIconConverter}}" 
                                      Width="30" Height="30" Margin="5"/>-->
 
-                                <!--Text -->
-                                <!--<TextBlock HorizontalAlignment="Center" Text="{Binding Path=., Converter={StaticResource EnumConverter}}" 
-                                    VerticalAlignment="Center" FontSize="14"/>-->
-                                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=., Converter={StaticResource MarketTypeToResxConverter}}" 
+                                <!--Text --><!--
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=., Converter={StaticResource EnumConverter}}" 
                                     VerticalAlignment="Center" FontSize="14"/>
+                                --><!--<TextBlock HorizontalAlignment="Center" Text="{Binding Path=., Converter={StaticResource MarketTypeToResxConverter}}" 
+                                    VerticalAlignment="Center" FontSize="14"/>--><!--
                             </StackPanel>
                         </DataTemplate>
-                    </ListBox.ItemTemplate>
+                    </ListBox.ItemTemplate>--><!--
 
                     <b:Interaction.Triggers>
                         <b:EventTrigger EventName="SelectionChanged">
@@ -74,6 +74,38 @@
                     </b:Interaction.Triggers>
 
 
+                </ListBox>-->
+
+                <ListBox 
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="{DynamicResource MenuLblCommonFG}"
+                    Style="{StaticResource MaterialDesignNavigationPrimaryListBox}"
+                    ItemsSource="{Binding MenuItemst}"
+                    SelectedValuePath="Type"
+                    SelectedValue="{Binding SelectedMenuType}" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <TextBlock FontFamily="Segoe MDL2 Assets"
+                           Text="{Binding Icon}"
+                           FontSize="16"
+                           VerticalAlignment="Center"
+                           Margin="0,0,8,0"/>
+                                <TextBlock Text="{Binding DisplayText}"
+                           VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="SelectionChanged">
+                            <b:CallMethodAction MethodName="LBMarketTypes_SelectionChanged" TargetObject="{Binding}"/>
+                        </b:EventTrigger>
+                        <b:EventTrigger EventName="MouseDoubleClick">
+                            <b:CallMethodAction MethodName="LBMarketTypes_MouseDoubleClick" TargetObject="{Binding}"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
                 </ListBox>
 
             </StackPanel>
