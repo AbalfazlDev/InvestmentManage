@@ -53,7 +53,7 @@ namespace InvestmentManage.Presentation.ViewModels
             Menuview = new MenuV();
             HomeView = new HomeV();
             OTCMarketMainViewModel = new OTCMarketMainVM();
-            OTCMarketMainView = OTCMarketMainV();
+            OTCMarketMainView =new OTCMarketMainV();
             OTCMarketMainView.DataContext = OTCMarketMainViewModel;
             MainSettingviewModel = new MainSettingVM();
             _mainSettingView = new MainSettingV();
@@ -146,6 +146,9 @@ namespace InvestmentManage.Presentation.ViewModels
                     //SelectedView = _mainSettingView;
                     //SelectedView.DataContext = MainSettingviewModel;
                     IsSettingView = true;
+                    break;
+                case MenuType.OTCMarket:
+                    SelectedView = OTCMarketMainView;
                     break;
                 default:
                     SelectedView = null;

@@ -3,10 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:InvestmentManage.Presentation.Views.OTCMarket"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <md:DialogHost>
+            <Grid>
+                <Button
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom" 
+                    Command="{x:Static md:DialogHost.OpenDialogCommand}"
+                    Style="{DynamicResource MaterialDesignFloatingActionLightButton}"></Button>
+                    <md:PackIcon Kind="Plus"/>
+            </Grid>
             
+            <md:DialogHost.DialogContent >
+                <UserControl Content="" MinWidth="150"/>
+            </md:DialogHost.DialogContent>
+        </md:DialogHost>
+        
     </Grid>
 </UserControl>
