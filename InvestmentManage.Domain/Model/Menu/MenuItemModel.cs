@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static InvestmentManage.Domain.Model.EnumM;
 
-namespace InvestmentManage.Domain.Model
+namespace InvestmentManage.Domain.Model.Menu
 {
     public class MenuItemModel
     {

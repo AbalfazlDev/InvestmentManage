@@ -132,6 +132,7 @@ namespace InvestmentManage.Presentation.ViewModels
             MainSettingviewModel.ResetLanguage();
             MenuviewModel.ResetLanguage();
             HomeViewModel.ResetLanguage();
+            OTCMarketMainViewModel.ResetLanguage();
         }
 
         public void LoadView(MenuType item)

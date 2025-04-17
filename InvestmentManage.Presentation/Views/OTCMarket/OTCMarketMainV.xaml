@@ -10,16 +10,19 @@
     <Grid>
         <md:DialogHost>
             <Grid>
+                <Label Content="{Binding MyProperty}"/>
                 <Button
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom" 
                     Command="{x:Static md:DialogHost.OpenDialogCommand}"
-                    Style="{DynamicResource MaterialDesignFloatingActionLightButton}"></Button>
+                    Style="{DynamicResource MaterialDesignFloatingActionLightButton}">
                     <md:PackIcon Kind="Plus"/>
+                </Button>
+                    
             </Grid>
             
             <md:DialogHost.DialogContent >
-                <UserControl Content="" MinWidth="150"/>
+                <UserControl Content="{Binding UcAddOtcPlan}" MinWidth="150"/>
             </md:DialogHost.DialogContent>
         </md:DialogHost>
         

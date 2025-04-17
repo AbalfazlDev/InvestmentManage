@@ -22,6 +22,7 @@ using InvestmentManage.Domain.Model;
 using static InvestmentManage.Domain.Model.EnumM;
 using InvestmentManage.Presentation.Resources.Symbol;
 using PropertyChanged;
+using InvestmentManage.Domain.Model.Menu;
 
 
 namespace InvestmentManage.Presentation.ViewModels
@@ -35,7 +36,7 @@ namespace InvestmentManage.Presentation.ViewModels
         public string MenuItemList => LocalizationLanguage.GetString("MenuItemList");
         public string LblSettings { get; set; }
         public string LblSettingsIcon => SegoeIcons.Settings;
-
+        public ObservableCollection<MenuItemModel> MenuItemst { get; set; }
 
 
         public string DarkMode { get; set; }
@@ -137,7 +138,7 @@ namespace InvestmentManage.Presentation.ViewModels
 
 
 
-        public ObservableCollection<MenuItemModel> MenuItemst { get; set; }
+
 
 
         private string GetLocalizedText(MenuType type)

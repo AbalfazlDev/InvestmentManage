@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="InvestmentManage.Presentation.Views.OTCMarket.AddOtcPlanV"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:InvestmentManage.Presentation.Views.OTCMarket"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="400">
+    <Grid 
+        Background="{DynamicResource MenuBG}"
+        Margin="5">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBox
+            Margin="5"
+            Foreground="{DynamicResource CommonLblFG}"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            md:HintAssist.Hint="{Binding LblOtcName}"
+            md:HintAssist.Foreground="{DynamicResource MenuLblHeadFG}"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+
+    </Grid>
+</UserControl>
