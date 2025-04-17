@@ -35,8 +35,9 @@
                     VerticalAlignment="Center"
                     Margin="20,0,0,0"
                     Content="{Binding LblFontSize}" 
-                    FontSize="20"/>
+                    FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"/>
                 <ListBox
+                    FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
                     Background="{DynamicResource MainBG}"
                     Foreground="{DynamicResource CommonLblFG}"
                     ItemsSource="{Binding FontSizeItems}"
@@ -49,8 +50,11 @@
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                     <b:Interaction.Triggers>
-                        <b:EventTrigger EventName="SelectionChanged">
+                        <!--<b:EventTrigger EventName="SelectionChanged">
                             <b:CallMethodAction MethodName="LB_FontSize_SelectionChanged" TargetObject="{Binding}"/>
+                        </b:EventTrigger>-->
+                        <b:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                            <b:CallMethodAction MethodName="Lb_ChangeFontSize_PreviewMouseLeftButtonUp" TargetObject="{Binding}"/>
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
                 </ListBox>
@@ -68,8 +72,8 @@
                     Style="{StaticResource MaterialDesignDiscreteSlider}"
                     Value="{Binding FontSizeSlider, Mode=TwoWay}" >
                     <b:Interaction.Triggers>
-                        <b:EventTrigger EventName="ValueChanged">
-                            <b:CallMethodAction MethodName="Slider_ValueChanged" TargetObject="{Binding}"/>
+                        <b:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                            <b:CallMethodAction MethodName="Slider_PreviewMouseLeftButtonUp" TargetObject="{Binding}"/>
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
                 </Slider>
@@ -89,9 +93,10 @@
                 <Label 
                     Background="{DynamicResource MainBG}"
                     Foreground="{DynamicResource CommonLblFG}"
-                    FontSize="20"
+                    FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
                     Content="{Binding LblLanguage}"/>
                 <ListBox
+                    FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
                     Background="{DynamicResource MainBG}"
                     Foreground="{DynamicResource CommonLblFG}"
                     ItemsSource="{Binding LBLanguage}"
@@ -102,8 +107,11 @@
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                     <b:Interaction.Triggers>
-                        <b:EventTrigger EventName="SelectionChanged">
+                        <!--<b:EventTrigger EventName="SelectionChanged">
                             <b:CallMethodAction MethodName="LB_Language_SelectionChanged" TargetObject="{Binding}"/>
+                        </b:EventTrigger>-->
+                        <b:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                            <b:CallMethodAction MethodName="Lb_LanguageChanged_PreviewMouseLeftButtonUp" TargetObject="{Binding}"/>
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
                 </ListBox>

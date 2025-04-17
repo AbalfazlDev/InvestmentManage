@@ -14,7 +14,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
                 <ResourceDictionary Source="Resources/Theme/LightPurpleTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <helper:LocalizationHelper x:Key="Loc" />
+            <!--<helper:LocalizationHelper x:Key="Loc" />-->
             <convertor:MarketTypeToResxConverter x:Key="MarketTypeToResxConverter" />
         </ResourceDictionary>
     </Application.Resources>

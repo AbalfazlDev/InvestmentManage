@@ -26,24 +26,36 @@
         <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="62" />
-                <RowDefinition Height="62" />
+                <RowDefinition Height="auto" MaxHeight="150"/>
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
             <CheckBox
                 Grid.Row="2"
+                Height="auto"
+                Width="auto"
+                Margin="10"
+                Padding="10"
+                
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
                 FontFamily="{Binding AppFontFamily}"
                 Foreground="{DynamicResource MenuLblCommonFG}"
-                Content="{Binding DarkMode,UpdateSourceTrigger=PropertyChanged}"
                 IsChecked="{Binding IsDarkMod}"
-                Style="{StaticResource MaterialDesignFilterChipSecondaryOutlineCheckBox}"/>
+                Style="{StaticResource MaterialDesignFilterChipPrimaryOutlineCheckBox}">
+                <Label
+                    Foreground="{DynamicResource MenuLblCommonFG}"
+                    Margin="6" 
+                    Content="{Binding DarkMode,UpdateSourceTrigger=PropertyChanged}"/>
+            </CheckBox>
 
             <Button 
+                Height="auto"
+                Width="auto"
                 Grid.Row="1"
-                Margin="5"
+                Margin="10"
+                Padding="10"
                 FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
                 FontFamily="{Binding AppFontFamily}"
                 HorizontalAlignment="Stretch"
@@ -53,7 +65,8 @@
                 Style="{StaticResource MaterialDesignFlatSecondaryDarkButton}">
                 <Button.Content>
                     <StackPanel
-                        HorizontalAlignment="Left"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch" 
                         Orientation="Horizontal">
                         <TextBlock
                             Margin="5,0,5,0"
@@ -72,7 +85,7 @@
                     Margin="15,5,0,0" 
                     Foreground="{DynamicResource MenuLblHeadFG}"
                     Content="{Binding MenuItemList}" 
-                    FontSize="{Binding SmalFontApp,UpdateSourceTrigger=PropertyChanged}"/>
+                    FontSize="{Binding SmallFontApp,UpdateSourceTrigger=PropertyChanged}"/>
                 <!--<ListBox
                     Grid.Row="1"
                     HorizontalAlignment="Center"

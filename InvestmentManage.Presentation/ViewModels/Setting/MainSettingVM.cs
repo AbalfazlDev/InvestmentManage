@@ -6,8 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Markup;
 using InvestmentManage.Domain.Model;
+using InvestmentManage.Domain.Model.Font;
 using InvestmentManage.Presentation.Helpers;
 using InvestmentManage.Presentation.Helpers.Language;
 using static InvestmentManage.Domain.Model.EnumM;
@@ -20,18 +22,8 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
         public ObservableCollection<FontSizeType> FontSizeItems { get; set; }
         public string LblFontSize { get; set; }
         public string LblLanguage { get; set; }
-        //private double _fontSizeSlider;
-
-        //public double FontSizeSlider
-        //{
-        //    get { return _fontSizeSlider; }
-        //    set
-        //    {
-        //        _fontSizeSlider = value;
-        //        OnFontSizeChanged.Invoke((int)FontSizeSlider);
-        //    }
-        //}
         public int FontSizeSlider { get; set; }
+
         public MainSettingVM()
         {
             LVSettingItems = new ObservableCollection<SettingItems>(Enum.GetValues(typeof(SettingItems)).Cast<EnumM.SettingItems>());
@@ -46,7 +38,7 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
         public Action<FontSizeType> OnFontSizeSelected { get; set; }
         public bool IsSliderFontSize { get; set; }
         public Action<int> OnFontSizeChanged { get; set; }
-        public FontSizeType SelectedFontSize { get; set; } = FontSizeType.Medium;
+        public FontSizeType SelectedFontSize { get; set; } /*= FontSizeType.Medium;*/
 
         public LanguageList SelectedLanguage { get; set; }
 
@@ -58,7 +50,7 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
         }
         public void LB_FontSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(FontSizeType.Custom == SelectedFontSize)
+            if (FontSizeType.Custom == SelectedFontSize)
                 IsSliderFontSize = true;
             else
             {
@@ -70,6 +62,30 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
         public void LB_Language_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             OnLanguageSelected.Invoke(SelectedLanguage);
+        }
+
+
+        public void Lb_LanguageChanged_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            OnLanguageSelected.Invoke(SelectedLanguage);
+        }
+
+        public void Slider_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            OnFontSizeChanged.Invoke(FontSizeSlider);
+            SelectedFontSize = FontSizeType.Custom;
+        }
+
+
+        public void Lb_ChangeFontSize_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (FontSizeType.Custom == SelectedFontSize)
+                IsSliderFontSize = true;
+            else
+            {
+                IsSliderFontSize = false;
+                OnFontSizeSelected.Invoke(SelectedFontSize);
+            }
         }
 
         public void ResetLanguage()

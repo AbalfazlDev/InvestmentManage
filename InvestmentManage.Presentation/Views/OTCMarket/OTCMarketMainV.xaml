@@ -13,18 +13,36 @@
                 <Label Content="{Binding MyProperty}"/>
                 <Button
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom" 
+                    VerticalAlignment="Bottom"
+                    Margin="15"
+                    Foreground="{DynamicResource CommonLblFG}"
+                    Background="{DynamicResource PrimeColor}"
                     Command="{x:Static md:DialogHost.OpenDialogCommand}"
-                    Style="{DynamicResource MaterialDesignFloatingActionLightButton}">
+                    Style="{DynamicResource MaterialDesignIconButton}">
                     <md:PackIcon Kind="Plus"/>
                 </Button>
-                    
+
             </Grid>
-            
+
             <md:DialogHost.DialogContent >
-                <UserControl Content="{Binding UcAddOtcPlan}" MinWidth="150"/>
+                <StackPanel
+                    Background="{DynamicResource MenuBG}">
+                    <UserControl 
+                        Content="{Binding UcAddOtcPlan}" 
+                        MinWidth="150"/>
+                    <Button
+                        Margin="10"
+                        MinHeight="45"
+                        FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
+                        HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Stretch"
+                        Foreground="{DynamicResource PrimeColor}"
+                        Content="{Binding LblBtnCloseDialog}"
+                        Style="{StaticResource MaterialDesignFlatLightButton}"
+                        Command="{x:Static md:DialogHost.CloseDialogCommand}"/>
+                </StackPanel>
             </md:DialogHost.DialogContent>
         </md:DialogHost>
-        
+
     </Grid>
 </UserControl>

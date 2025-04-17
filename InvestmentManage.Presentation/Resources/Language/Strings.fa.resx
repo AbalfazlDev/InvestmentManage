@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AmountOtcPlan" xml:space="preserve">
+    <value>مقدار سرمایه گذاری در طرح</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>بستن</value>
+  </data>
   <data name="CommoditiesExchange" xml:space="preserve">
     <value>بورس کالا</value>
   </data>
@@ -129,14 +135,26 @@
   <data name="Home" xml:space="preserve">
     <value>خانه</value>
   </data>
+  <data name="LastName" xml:space="preserve">
+    <value>نام خانوادگی</value>
+  </data>
   <data name="MenuItemList" xml:space="preserve">
     <value>منو</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>نام</value>
   </data>
   <data name="OTCMarket" xml:space="preserve">
     <value>فرابورس</value>
   </data>
+  <data name="OTCName" xml:space="preserve">
+    <value>نام طرح</value>
+  </data>
   <data name="Setting" xml:space="preserve">
     <value>تنظیمات</value>
+  </data>
+  <data name="StartOtcPlan" xml:space="preserve">
+    <value>تاریخ شروع طرح</value>
   </data>
   <data name="StockExchange" xml:space="preserve">
     <value>بورس اوراق بهادر</value>

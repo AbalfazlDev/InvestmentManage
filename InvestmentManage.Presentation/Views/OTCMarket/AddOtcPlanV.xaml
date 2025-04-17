@@ -15,12 +15,18 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <!--<StackPanel x:Name="TestChangeFontSize" Grid.Row="1">
+            <Label Content="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="{Binding SmallFontApp,UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>-->
         <TextBox
             Margin="5"
+            FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
             Foreground="{DynamicResource CommonLblFG}"
             VerticalAlignment="Stretch"
             HorizontalAlignment="Stretch"
             md:HintAssist.Hint="{Binding LblOtcName}"
+            md:HintAssist.HelperTextFontSize ="{Binding SmallFontApp,UpdateSourceTrigger=PropertyChanged}"
             md:HintAssist.Foreground="{DynamicResource MenuLblHeadFG}"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
 

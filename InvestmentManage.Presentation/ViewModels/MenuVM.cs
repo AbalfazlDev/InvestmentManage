@@ -18,11 +18,11 @@ using System.Windows;
 using System.Globalization;
 using InvestmentManage.Presentation.Views;
 using InvestmentManage.Presentation.Helpers.Language;
-using InvestmentManage.Domain.Model;
 using static InvestmentManage.Domain.Model.EnumM;
 using InvestmentManage.Presentation.Resources.Symbol;
 using PropertyChanged;
 using InvestmentManage.Domain.Model.Menu;
+using InvestmentManage.Domain.Model.Font;
 
 
 namespace InvestmentManage.Presentation.ViewModels
