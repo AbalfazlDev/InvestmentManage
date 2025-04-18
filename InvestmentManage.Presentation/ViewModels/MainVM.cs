@@ -37,12 +37,12 @@ namespace InvestmentManage.Presentation.ViewModels
         private static MainSettingV _mainSettingView { get; set; }
         public static OTCMarketMainV OTCMarketMainView { get; set; }
         private static OTCMarketMainVM OTCMarketMainViewModel { get; set; }
+        public FlowDirection AppFlowDirection { get; set; } = FlowDirection.LeftToRight;
+        public UserControl SelectedView { get; set; }
         private HomeV HomeView { get; set; }
         public HomeVM HomeViewModel { get; set; }
-
         public bool IsSettingView { get; set; }
 
-        private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         public MainVM()
         {
             MenuviewModel = new MenuVM();
@@ -65,9 +65,6 @@ namespace InvestmentManage.Presentation.ViewModels
             LoadView(MenuType.Home);
         }
 
-        public FlowDirection AppFlowDirection { get; set; } = FlowDirection.LeftToRight;
-
-        public UserControl SelectedView { get; set; }
 
         private void changeLbFontSize(FontSizeType fontSize)
         {
@@ -89,18 +86,15 @@ namespace InvestmentManage.Presentation.ViewModels
                     MainSettingviewModel.FontSizeSlider = 27;
                     ChangeFontSize(27);
                     break;
-
             }
         }
         private void ChangeFontSize(int normalFontSize)
         {
-
             applyFontSize(MenuviewModel, normalFontSize);
             applyFontSize(MainSettingviewModel, normalFontSize);
             applyFontSize(HomeViewModel, normalFontSize);
             applyFontSize(OTCMarketMainViewModel, normalFontSize);
             applyFontSize(OTCMarketMainViewModel.AddOtcPlanViewModel, normalFontSize);
-
         }
 
         private void applyFontSize(IFontSizeModel vm, int normalFontSize)
@@ -114,17 +108,21 @@ namespace InvestmentManage.Presentation.ViewModels
             vm.LargeFontApp = LargeFontApp;
         }
 
-        private void ChangeLanguage(EnumM.LanguageList language)
+        private void ChangeLanguage(LanguageList language)
         {
             switch (language)
             {
-                case EnumM.LanguageList.English:
+                case LanguageList.English:
                     LocalizationLanguage.SetLanguage("en");
                     AppFlowDirection = FlowDirection.LeftToRight;
                     break;
 
-                case EnumM.LanguageList.Farsi:
+                case LanguageList.Farsi:
                     LocalizationLanguage.SetLanguage("fa");
+                    AppFlowDirection = FlowDirection.RightToLeft;
+                    break;
+                case LanguageList.Arabi:
+                    LocalizationLanguage.SetLanguage("ar");
                     AppFlowDirection = FlowDirection.RightToLeft;
                     break;
 
@@ -156,12 +154,6 @@ namespace InvestmentManage.Presentation.ViewModels
                     break;
             }
         }
-
-        public void ListBox_Selected(object sender, RoutedEventArgs e)
-        {
-
-        }
-
 
     }
 }

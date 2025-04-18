@@ -19,7 +19,8 @@ namespace InvestmentManage.Domain.Model
         public enum LanguageList
         {
             Farsi,
-            English
+            English,
+            Arabi
         }
 
         public enum FontSizeType
