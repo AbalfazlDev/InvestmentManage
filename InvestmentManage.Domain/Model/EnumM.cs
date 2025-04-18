@@ -32,7 +32,7 @@ namespace InvestmentManage.Domain.Model
         }
         public enum LanguageList
         {
-            Farsi,
+            Persian,
             Arabi,
             English,
             Turkish

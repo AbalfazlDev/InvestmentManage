@@ -43,6 +43,7 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
         public ObservableCollection<LanguageList> LBLanguage { get; set; }
         public Action<LanguageList> OnLanguageSelected { get; set; }
         public Action<FontSizeType> OnFontSizeSelected { get; set; }
+        public Action OnChangeColor { get; set; }
         public bool IsSliderFontSize { get; set; }
         public Action<int> OnFontSizeChanged { get; set; }
         public FontSizeType SelectedFontSize { get; set; } /*= FontSizeType.Medium;*/
@@ -78,9 +79,11 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
         
         public void Lb_ColorThemeChanged_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            
             //ListBox listbox = sender as ListBox;
             //ColorThemeItemsM selectedColor = (ColorThemeItemsM)listbox.SelectedItem;
             ThemeSet.ChangeThemeColor(SelectedColor);
+            OnChangeColor();
 
         }
 

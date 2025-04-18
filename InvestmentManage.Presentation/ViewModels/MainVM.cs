@@ -60,11 +60,15 @@ namespace InvestmentManage.Presentation.ViewModels
             MainSettingviewModel.OnFontSizeSelected = changeLbFontSize;
             MainSettingviewModel.OnFontSizeChanged = ChangeFontSize;
             MainSettingviewModel.OnLanguageSelected = ChangeLanguage;
+            MainSettingviewModel.OnChangeColor = changeTheme;
             MainSettingviewModel.ResetLanguage();
             changeLbFontSize(FontSizeType.Medium);
             LoadView(MenuType.Home);
         }
-
+        private void changeTheme()
+        {
+            HomeViewModel.ResetTheme();
+        }
 
         private void changeLbFontSize(FontSizeType fontSize)
         {
@@ -110,7 +114,6 @@ namespace InvestmentManage.Presentation.ViewModels
 
         private void ChangeLanguage(LanguageList language)
         {
-            HomeViewModel.ResetTheme();
             switch (language)
             {
                 case LanguageList.English:
@@ -122,7 +125,7 @@ namespace InvestmentManage.Presentation.ViewModels
                     AppFlowDirection = FlowDirection.LeftToRight;
                     break;
 
-                case LanguageList.Farsi:
+                case LanguageList.Persian:
                     LocalizationLanguage.SetLanguage("fa");
                     AppFlowDirection = FlowDirection.RightToLeft;
                     break;

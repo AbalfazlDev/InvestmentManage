@@ -17,7 +17,7 @@ namespace InvestmentManage.Presentation.Helpers.ThemeH
      public static class ThemeSet
     {
         private static ColorType _color = ColorType.Purple;
-        private static string _themeMod = "Light";
+        private static ThemeModType _themeMod = ThemeModType.Light;
 
         public static void ChangeThemeColor(ColorType color)
         {
@@ -28,7 +28,7 @@ namespace InvestmentManage.Presentation.Helpers.ThemeH
 
         static public void ChangeDarkMode(ThemeModType mod)
         {
-            _themeMod = mod.ToString();
+            _themeMod = mod;
             ResetTheme();
         }
        
@@ -49,7 +49,7 @@ namespace InvestmentManage.Presentation.Helpers.ThemeH
             
             Application.Current.Resources.MergedDictionaries.Add(theme);
 
-            themeT.SetBaseTheme(BaseTheme.Light); 
+            themeT.SetBaseTheme(ConverThemeMod(_themeMod)); 
 
             themeT.SetPrimaryColor(ConvertColor(_color));
 
@@ -60,6 +60,10 @@ namespace InvestmentManage.Presentation.Helpers.ThemeH
             paletteHelper.SetTheme(themeT);
         }
 
+        private static BaseTheme ConverThemeMod(ThemeModType mod)
+        {
+            return (mod == ThemeModType.Dark) ? BaseTheme.Dark : BaseTheme.Light;
+        }
         public static Color ConvertColor(ColorType colorType)
         {
             switch (colorType)
