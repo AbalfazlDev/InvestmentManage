@@ -33,7 +33,7 @@ namespace InvestmentManage.Presentation.ViewModels
         public FontFamily AppFontFamily { get; set; }
         public int AppFontSize { get; set; }
         public RelayCommand BtnSettings { get; set; }
-        public string MenuItemList => LocalizationLanguage.GetString("MenuItemList");
+        public string MenuItemList { get; set; }
         public string LblSettings { get; set; }
         public string LblSettingsIcon => SegoeIcons.Settings;
         public ObservableCollection<MenuItemModel> MenuItemst { get; set; }
@@ -87,6 +87,7 @@ namespace InvestmentManage.Presentation.ViewModels
         {
             DarkMode = LocalizationLanguage.GetString("DarkMode");
             LblSettings = LocalizationLanguage.GetString("Setting");
+            MenuItemList = LocalizationLanguage.GetString("MenuItemList");
             MenuItemst.Clear();
             foreach (MenuType type in Enum.GetValues(typeof(MenuType)))
             {
@@ -134,12 +135,6 @@ namespace InvestmentManage.Presentation.ViewModels
                 }
             }
         }
-
-
-
-
-
-
 
         private string GetLocalizedText(MenuType type)
         {
