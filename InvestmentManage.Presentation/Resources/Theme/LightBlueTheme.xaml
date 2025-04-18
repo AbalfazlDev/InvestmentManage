@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Backgrounds -->
+    <SolidColorBrush x:Key="MenuBG">#E3F2FD</SolidColorBrush>
+    <!-- Blue 50 -->
+    <SolidColorBrush x:Key="MainBG">#FFFFFF</SolidColorBrush>
+    <!-- White -->
+
+    <!-- Primary Color Set -->
+    <SolidColorBrush x:Key="PrimeColor">#2196F3</SolidColorBrush>
+    <!-- Blue 500 -->
+    <SolidColorBrush x:Key="MenuLblHeadFG">#1976D2</SolidColorBrush>
+    <!-- Blue 700 -->
+    <SolidColorBrush x:Key="MenuLblCommonFG">#0D47A1</SolidColorBrush>
+    <!-- Blue 900 -->
+    <SolidColorBrush x:Key="CommonLblFG">#263238</SolidColorBrush>
+    <!-- Blue Grey 900 -->
+
+    <!-- Border -->
+    <SolidColorBrush x:Key="BorderColor">#90CAF9</SolidColorBrush>
+    <!-- Blue 200 -->
+
+    <!-- Chart Colors -->
+    <SolidColorBrush x:Key="ChartLineColor">#1E88E5</SolidColorBrush>
+    <!-- Blue 600 -->
+    <SolidColorBrush x:Key="ChartFillColor">#BBDEFB</SolidColorBrush>
+    <!-- Blue 100 -->
+</ResourceDictionary>

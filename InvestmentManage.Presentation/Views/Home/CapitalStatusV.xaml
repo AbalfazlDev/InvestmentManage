@@ -8,9 +8,9 @@
              xmlns:viewmodels="clr-namespace:InvestmentManage.Presentation.ViewModels.Home"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
+    <!--<UserControl.DataContext>
         <viewmodels:CapitalStatusVM/>
-    </UserControl.DataContext>
+    </UserControl.DataContext>-->
     <Grid>
         <!-- Create the chart -->
         <lvc:CartesianChart Series="{Binding SeriesCollection}" />

@@ -120,20 +120,44 @@
   <data name="AmountOtcPlan" xml:space="preserve">
     <value>Amount OTC Plan</value>
   </data>
+  <data name="Blue" xml:space="preserve">
+    <value>Blue</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>Close</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
   </data>
   <data name="CommoditiesExchange" xml:space="preserve">
     <value>Commodities Exchange</value>
   </data>
+  <data name="Cyan" xml:space="preserve">
+    <value>Cyan</value>
+  </data>
   <data name="DarkMode" xml:space="preserve">
     <value>Dark Mode</value>
+  </data>
+  <data name="DeepBlue" xml:space="preserve">
+    <value>Deep Blue</value>
+  </data>
+  <data name="DeepOrange" xml:space="preserve">
+    <value>Deep Orange</value>
+  </data>
+  <data name="DeepRed" xml:space="preserve">
+    <value>Deep Red</value>
   </data>
   <data name="EnergyExchange" xml:space="preserve">
     <value>Energy Exchange</value>
   </data>
+  <data name="FontSize" xml:space="preserve">
+    <value>Font Size</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Last Name</value>
@@ -144,11 +168,20 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="Orange" xml:space="preserve">
+    <value>Orange</value>
+  </data>
   <data name="OTCMarket" xml:space="preserve">
     <value>OTC Market</value>
   </data>
   <data name="OTCName" xml:space="preserve">
     <value>OTC Plan Name</value>
+  </data>
+  <data name="Purple" xml:space="preserve">
+    <value>Purple</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>Red</value>
   </data>
   <data name="Setting" xml:space="preserve">
     <value>Settings</value>

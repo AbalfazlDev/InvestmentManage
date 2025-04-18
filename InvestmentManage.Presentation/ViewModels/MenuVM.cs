@@ -28,7 +28,7 @@ using InvestmentManage.Domain.Model.Font;
 namespace InvestmentManage.Presentation.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    internal class MenuVM :FontSizeModel
+    internal class MenuVM : FontSizeModel
     {
         public FontFamily AppFontFamily { get; set; }
         public int AppFontSize { get; set; }
@@ -81,7 +81,10 @@ namespace InvestmentManage.Presentation.ViewModels
             }
         }
 
-        private void darkMod(bool isDark) => ThemeSet.ChangeDarkMode(isDark);
+        private void darkMod(bool isDark)
+        {
+            ThemeSet.ChangeDarkMode(isDark ? ThemeModType.Dark : ThemeModType.Light);
+        }
 
         public void ResetLanguage()
         {
@@ -122,19 +125,21 @@ namespace InvestmentManage.Presentation.ViewModels
             return SegoeIcons.LoadIssue;
         }
 
-        private MenuType _selectedMenuType;
-        public MenuType SelectedMenuType
-        {
-            get => _selectedMenuType;
-            set
-            {
-                if (_selectedMenuType != value)
-                {
-                    _selectedMenuType = value;
+        //private MenuType _selectedMenuType;
+        //public MenuType SelectedMenuType
+        //{
+        //    get => _selectedMenuType;
+        //    set
+        //    {
+        //        if (_selectedMenuType != value)
+        //        {
+        //            _selectedMenuType = value;
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
+
+        public MenuType SelectedMenuType { get; set; }
 
         private string GetLocalizedText(MenuType type)
         {

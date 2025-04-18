@@ -10,22 +10,29 @@ using System.Windows.Input;
 using System.Windows.Markup;
 using InvestmentManage.Domain.Model;
 using InvestmentManage.Domain.Model.Font;
+using InvestmentManage.Domain.Model.Theme;
 using InvestmentManage.Presentation.Helpers;
 using InvestmentManage.Presentation.Helpers.Language;
+using InvestmentManage.Presentation.Helpers.ThemeH;
+using PropertyChanged;
 using static InvestmentManage.Domain.Model.EnumM;
 using static InvestmentManage.Domain.Model.MarketCategory.MarketTypeM;
 
 namespace InvestmentManage.Presentation.ViewModels.Setting
 {
+    [AddINotifyPropertyChangedInterface]
     public class MainSettingVM : FontSizeModel
     {
         public ObservableCollection<FontSizeType> FontSizeItems { get; set; }
+        public ObservableCollection<ColorThemeItemsM> ColorThemeItems { get; set; }
         public string LblFontSize { get; set; }
         public string LblLanguage { get; set; }
+        public string LblColor { get; set; }
         public int FontSizeSlider { get; set; }
 
         public MainSettingVM()
         {
+            ColorThemeItems = new ObservableCollection<ColorThemeItemsM>();
             LVSettingItems = new ObservableCollection<SettingItems>(Enum.GetValues(typeof(SettingItems)).Cast<EnumM.SettingItems>());
             LBLanguage = new ObservableCollection<LanguageList>(Enum.GetValues(typeof(LanguageList)).Cast<EnumM.LanguageList>());
             SelectedLanguage = EnumM.LanguageList.English;
@@ -39,7 +46,7 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
         public bool IsSliderFontSize { get; set; }
         public Action<int> OnFontSizeChanged { get; set; }
         public FontSizeType SelectedFontSize { get; set; } /*= FontSizeType.Medium;*/
-
+        public ColorType SelectedColor { get; set; }
         public LanguageList SelectedLanguage { get; set; }
 
 
@@ -64,10 +71,17 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
             OnLanguageSelected.Invoke(SelectedLanguage);
         }
 
-
         public void Lb_LanguageChanged_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             OnLanguageSelected.Invoke(SelectedLanguage);
+        }
+        
+        public void Lb_ColorThemeChanged_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            //ListBox listbox = sender as ListBox;
+            //ColorThemeItemsM selectedColor = (ColorThemeItemsM)listbox.SelectedItem;
+            ThemeSet.ChangeThemeColor(SelectedColor);
+
         }
 
         public void Slider_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -90,8 +104,19 @@ namespace InvestmentManage.Presentation.ViewModels.Setting
 
         public void ResetLanguage()
         {
-            LblFontSize = LocalizationLanguage.GetString("LblFontHead");
-            LblLanguage = LocalizationLanguage.GetString("LblLanguage");
+
+            LblFontSize = LocalizationLanguage.GetString("FontSize");
+            LblLanguage = LocalizationLanguage.GetString("Language");
+            LblColor = LocalizationLanguage.GetString("Color");
+            ColorThemeItems.Clear();
+            foreach(ColorType type in Enum.GetValues(typeof(ColorType)))
+            {
+                ColorThemeItems.Add(new ColorThemeItemsM
+                {
+                    Color = type,
+                    DisplayText = LocalizationLanguage.GetString($"{type}"),
+                });
+            }
         }
     }
 }

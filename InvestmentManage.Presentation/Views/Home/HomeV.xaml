@@ -28,6 +28,6 @@
             </md:Chip.Icon>
         </md:Chip>
 
-        <viewsHome:CapitalStatusV Grid.Row="1" Margin="10,20,10,5"/>
+        <ContentControl Content="{Binding CapitalStatusView}"  Grid.Row="1" Margin="10,20,10,5"/>
     </Grid>
 </UserControl>

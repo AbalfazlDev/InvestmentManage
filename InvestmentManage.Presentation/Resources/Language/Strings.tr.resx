@@ -118,81 +118,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AmountOtcPlan" xml:space="preserve">
-    <value>مقدار سرمایه گذاری در طرح</value>
-  </data>
-  <data name="Blue" xml:space="preserve">
-    <value>آبی</value>
+    <value>Plan Yatırım Miktarı</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>بستن</value>
-  </data>
-  <data name="Color" xml:space="preserve">
-    <value>رنگ</value>
+    <value>Kapat</value>
   </data>
   <data name="CommoditiesExchange" xml:space="preserve">
-    <value>بورس کالا</value>
-  </data>
-  <data name="Cyan" xml:space="preserve">
-    <value>فیروزه ای</value>
+    <value>Emtia Borsası</value>
   </data>
   <data name="DarkMode" xml:space="preserve">
-    <value>حالت تیره</value>
-  </data>
-  <data name="DeepBlue" xml:space="preserve">
-    <value>آبی عمیق</value>
-  </data>
-  <data name="DeepOrange" xml:space="preserve">
-    <value>نارنجی عمیق</value>
-  </data>
-  <data name="DeepRed" xml:space="preserve">
-    <value>قرمز عمیق</value>
+    <value>Koyu Mod</value>
   </data>
   <data name="EnergyExchange" xml:space="preserve">
-    <value>بورس انرژی</value>
-  </data>
-  <data name="FontSize" xml:space="preserve">
-    <value>سایز فونت</value>
+    <value>Enerji Borsası</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>خانه</value>
-  </data>
-  <data name="Language" xml:space="preserve">
-    <value>زبان</value>
+    <value>Ana Sayfa</value>
   </data>
   <data name="LastName" xml:space="preserve">
-    <value>نام خانوادگی</value>
+    <value>Soyadı</value>
   </data>
   <data name="MenuItemList" xml:space="preserve">
-    <value>منو</value>
+    <value>Menü</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>نام</value>
-  </data>
-  <data name="Orange" xml:space="preserve">
-    <value>نارنجی</value>
+    <value>Ad</value>
   </data>
   <data name="OTCMarket" xml:space="preserve">
-    <value>فرابورس</value>
+    <value>Tezgah Üstü Pazar</value>
   </data>
   <data name="OTCName" xml:space="preserve">
-    <value>نام طرح</value>
-  </data>
-  <data name="Purple" xml:space="preserve">
-    <value>بنفش</value>
-  </data>
-  <data name="Red" xml:space="preserve">
-    <value>قرمز</value>
+    <value>Plan Adı</value>
   </data>
   <data name="Setting" xml:space="preserve">
-    <value>تنظیمات</value>
+    <value>Ayarlar</value>
   </data>
   <data name="StartOtcPlan" xml:space="preserve">
-    <value>تاریخ شروع طرح</value>
+    <value>Planın Başlangıç Tarihi</value>
   </data>
   <data name="StockExchange" xml:space="preserve">
-    <value>بورس اوراق بهادر</value>
+    <value>Menkul Kıymetler Borsası</value>
   </data>
   <data name="TxtWelcome" xml:space="preserve">
-    <value>سلام ابوالفضل</value>
+    <value>Merhaba Abalfazl</value>
   </data>
 </root>

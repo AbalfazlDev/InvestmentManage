@@ -110,10 +110,15 @@ namespace InvestmentManage.Presentation.ViewModels
 
         private void ChangeLanguage(LanguageList language)
         {
+            HomeViewModel.ResetTheme();
             switch (language)
             {
                 case LanguageList.English:
                     LocalizationLanguage.SetLanguage("en");
+                    AppFlowDirection = FlowDirection.LeftToRight;
+                    break;
+                case LanguageList.Turkish:
+                    LocalizationLanguage.SetLanguage("tr");
                     AppFlowDirection = FlowDirection.LeftToRight;
                     break;
 

@@ -15,10 +15,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Border 
+        <Border Name="FontSize"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch" 
             Grid.Row="0"
@@ -27,38 +28,46 @@
             BorderBrush="{DynamicResource BorderColor}"
             BorderThickness="1"
             CornerRadius="15">
-            <DockPanel>
-                <Label 
-                    Background="{DynamicResource MainBG}"
-                    Foreground="{DynamicResource CommonLblFG}"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Margin="20,0,0,0"
-                    Content="{Binding LblFontSize}" 
-                    FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"/>
-                <ListBox
-                    FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
-                    Background="{DynamicResource MainBG}"
-                    Foreground="{DynamicResource CommonLblFG}"
-                    ItemsSource="{Binding FontSizeItems}"
-                    SelectedItem="{Binding SelectedFontSize}"
-                    VerticalAlignment="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Label 
+                        Background="{DynamicResource MainBG}"
+                        Foreground="{DynamicResource CommonLblFG}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="20,0,0,0"
+                        Content="{Binding LblFontSize}" 
+                        FontSize="{Binding LargeFontApp,UpdateSourceTrigger=PropertyChanged}"/>
+                    <ListBox
+                        FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
+                        Background="{DynamicResource MainBG}"
+                        Foreground="{DynamicResource CommonLblFG}"
+                        ItemsSource="{Binding FontSizeItems}"
+                        SelectedItem="{Binding SelectedFontSize}"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
 
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                    <b:Interaction.Triggers>
-                        <!--<b:EventTrigger EventName="SelectionChanged">
-                            <b:CallMethodAction MethodName="LB_FontSize_SelectionChanged" TargetObject="{Binding}"/>
-                        </b:EventTrigger>-->
-                        <b:EventTrigger EventName="PreviewMouseLeftButtonUp">
-                            <b:CallMethodAction MethodName="Lb_ChangeFontSize_PreviewMouseLeftButtonUp" TargetObject="{Binding}"/>
-                        </b:EventTrigger>
-                    </b:Interaction.Triggers>
-                </ListBox>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <b:Interaction.Triggers>
+                            <!--<b:EventTrigger EventName="SelectionChanged">
+            <b:CallMethodAction MethodName="LB_FontSize_SelectionChanged" TargetObject="{Binding}"/>
+        </b:EventTrigger>-->
+                            <b:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                                <b:CallMethodAction MethodName="Lb_ChangeFontSize_PreviewMouseLeftButtonUp" TargetObject="{Binding}"/>
+                            </b:EventTrigger>
+                        </b:Interaction.Triggers>
+                    </ListBox>
+                </Grid>
                 <Slider 
+                    Grid.Row="1"
                     Margin="10"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Stretch"
@@ -77,10 +86,10 @@
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
                 </Slider>
-            </DockPanel>
+            </Grid>
         </Border>
 
-        <Border
+        <Border Name="Language"
             Grid.Row="1"
             Margin="10"
             Padding="10"   
@@ -89,13 +98,15 @@
             BorderBrush="{DynamicResource BorderColor}"
             BorderThickness="1"
             CornerRadius="15">
-            <DockPanel>
+            <Grid>
                 <Label 
+                    HorizontalAlignment="Left" 
                     Background="{DynamicResource MainBG}"
                     Foreground="{DynamicResource CommonLblFG}"
-                    FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
+                    FontSize="{Binding LargeFontApp,UpdateSourceTrigger=PropertyChanged}"
                     Content="{Binding LblLanguage}"/>
                 <ListBox
+                    HorizontalAlignment="Center" 
                     FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
                     Background="{DynamicResource MainBG}"
                     Foreground="{DynamicResource CommonLblFG}"
@@ -103,7 +114,7 @@
                     SelectedItem="{Binding SelectedLanguage}">
                     <ListBox.ItemsPanel >
                         <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"/>
+                            <StackPanel  Orientation="Horizontal"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                     <b:Interaction.Triggers>
@@ -112,6 +123,63 @@
                         </b:EventTrigger>-->
                         <b:EventTrigger EventName="PreviewMouseLeftButtonUp">
                             <b:CallMethodAction MethodName="Lb_LanguageChanged_PreviewMouseLeftButtonUp" TargetObject="{Binding}"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </ListBox>
+            </Grid>
+        </Border>
+
+        <Border Name="ThemeColor"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch" 
+            Grid.Row="2"
+            Margin="10"
+            Padding="10"
+            BorderBrush="{DynamicResource BorderColor}"
+            BorderThickness="1"
+            CornerRadius="15">
+            <DockPanel>
+                <Label 
+                    Background="{DynamicResource MainBG}"
+                    Foreground="{DynamicResource CommonLblFG}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="20,0,0,0"
+                    Content="{Binding LblColor}" 
+                    FontSize="{Binding LargeFontApp,UpdateSourceTrigger=PropertyChanged}"/>
+                <ListBox 
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="{Binding MediumFontApp}"
+                    Foreground="{DynamicResource CommonLblFG}"
+                    ItemsSource="{Binding ColorThemeItems}"
+                    SelectedValuePath="Color"
+                    SelectedValue="{Binding SelectedColor,UpdateSourceTrigger=PropertyChanged}" >
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <!--<Label
+                                    Foreground="{DynamicResource MenuLblCommonFG}"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    Content="{Binding x}"
+                                    FontSize="{Binding DataContext.MediumFontApp, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,8,0"/>-->
+                                <Label                            
+                                    FontSize="{Binding DataContext.MediumFontApp, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                    Content="{Binding DisplayText}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                            <b:CallMethodAction MethodName="Lb_ColorThemeChanged_PreviewMouseLeftButtonUp" TargetObject="{Binding}"/>
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
                 </ListBox>

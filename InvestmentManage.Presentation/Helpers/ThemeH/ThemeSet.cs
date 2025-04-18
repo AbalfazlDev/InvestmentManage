@@ -9,64 +9,76 @@ using MaterialDesignThemes.Wpf;
 using System.Windows.Media;
 using System.Windows.Controls;
 using System.Windows;
+using static InvestmentManage.Domain.Model.EnumM;
 
 
 namespace InvestmentManage.Presentation.Helpers.ThemeH
 {
-     public class ThemeSet
+     public static class ThemeSet
     {
-        public ThemeSet()
-        {
+        private static ColorType _color = ColorType.Purple;
+        private static string _themeMod = "Light";
 
+        public static void ChangeThemeColor(ColorType color)
+        {
+            _color = color;
+            ResetTheme();
         }
-        static public void ChangeThemeColor(Color colorPrimary, Color colorSecond)
+
+
+        static public void ChangeDarkMode(ThemeModType mod)
+        {
+            _themeMod = mod.ToString();
+            ResetTheme();
+        }
+       
+        private static void ResetTheme()
         {
             var paletteHelper = new PaletteHelper();
-            //Retrieve the app's existing theme
-            Theme theme = paletteHelper.GetTheme();
+            Theme themeT = paletteHelper.GetTheme();
 
-            //Change the base theme to Dark
-            //theme.SetBaseTheme(BaseTheme.Dark);
-            //or theme.SetBaseTheme(Theme.Light);
+            var uri = new Uri($"Resources/Theme/{_themeMod}{_color}Theme.xaml", UriKind.Relative);
+            ResourceDictionary theme = new ResourceDictionary() { Source = uri };
 
-            //Change all of the primary colors to Red
-            theme.SetPrimaryColor(colorPrimary);
-
-            //Change all of the secondary colors to Blue
-            theme.SetSecondaryColor(colorSecond);
-
-            //You can also change a single color on the theme, and optionally set the corresponding foreground color
-            //theme.PrimaryMid = new ColorPair(Colors.Brown, Colors.White);
-
-            //Change the app's current theme
-            paletteHelper.SetTheme(theme);
-        }
-
-        static public void ChangeDarkMode(bool isDark)
-        {
-
-            if (isDark)
-            {
-                var uri = new Uri("Resources/Theme/DarkPurpleTheme.xaml", UriKind.Relative);
-                ResourceDictionary theme = new ResourceDictionary() { Source = uri };
-
-                Application.Current.Resources.MergedDictionaries.Clear();
-                Application.Current.Resources.MergedDictionaries.Add(theme);
-            }
-            else
-            {
-                var uri = new Uri("Resources/Theme/LightPurpleTheme.xaml", UriKind.Relative);
-                ResourceDictionary theme = new ResourceDictionary() { Source = uri };
-
-                Application.Current.Resources.MergedDictionaries.Clear();
-                Application.Current.Resources.MergedDictionaries.Add(theme);
-            }
+            Application.Current.Resources.MergedDictionaries.Clear();
+            
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary
             {
                 Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml")
             });
+            
+            Application.Current.Resources.MergedDictionaries.Add(theme);
+
+            themeT.SetBaseTheme(BaseTheme.Light); 
+
+            themeT.SetPrimaryColor(ConvertColor(_color));
+
+            themeT.SetSecondaryColor(Colors.Blue);
+
+            themeT.PrimaryMid = new ColorPair(Colors.Brown, Colors.White);
+
+            paletteHelper.SetTheme(themeT);
         }
 
-
+        public static Color ConvertColor(ColorType colorType)
+        {
+            switch (colorType)
+            {
+                case ColorType.Blue:
+                    return Colors.Blue;
+                case ColorType.DeepBlue:
+                    return Colors.MidnightBlue;
+                case ColorType.Purple:
+                    return Colors.Purple;
+                case ColorType.Orange:
+                    return Colors.Orange;
+                case ColorType.Red:
+                    return Colors.Red;
+                case ColorType.Cyan:
+                    return Colors.Cyan;
+                default:
+                    return Colors.Black; 
+            }
+        }
     }
 }
