@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static InvestmentManage.Domain.Model.EnumM;
 
-namespace InvestmentManage.Domain.Model
+namespace InvestmentManage.Domain.Model.Theme
 {
-    public class MenuItemModel
+    public class ColorThemeItemsM
     {
-        public MenuType Type { get; set; }
+        public ColorType Color { get; set; }
         public string DisplayText { get; set; }
-        public string Icon { get; set; }
     }
 }

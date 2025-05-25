@@ -59,7 +59,7 @@
 
             <md:DrawerHost IsBottomDrawerOpen="{Binding IsSettingView}" Grid.ColumnSpan="3">
                 <md:DrawerHost.BottomDrawerContent >
-                    <viewSetting:MainSettingV DataContext="{Binding MainSettingviewModel}" Margin="20"/>
+                    <viewSetting:MainSettingV DataContext="{Binding MainSettingviewModel}"/>
                 </md:DrawerHost.BottomDrawerContent>
             </md:DrawerHost>
         </Grid>

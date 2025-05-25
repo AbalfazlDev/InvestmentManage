@@ -24,28 +24,25 @@ using PropertyChanged;
 using InvestmentManage.Presentation.ViewModels.Home;
 using InvestmentManage.Presentation.Views.OTCMarket;
 using InvestmentManage.Presentation.ViewModels.OTCMarket;
+using InvestmentManage.Domain.Model.Font;
 
 namespace InvestmentManage.Presentation.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
     internal class MainVM : FontSizeModel
     {
-        #region Application Language
-
-
-        #endregion
         public static MenuVM MenuviewModel { get; set; }
         public static MenuV Menuview { get; set; }
         public static MainSettingVM MainSettingviewModel { get; set; }
         private static MainSettingV _mainSettingView { get; set; }
         public static OTCMarketMainV OTCMarketMainView { get; set; }
         private static OTCMarketMainVM OTCMarketMainViewModel { get; set; }
+        public FlowDirection AppFlowDirection { get; set; } = FlowDirection.LeftToRight;
+        public UserControl SelectedView { get; set; }
         private HomeV HomeView { get; set; }
         public HomeVM HomeViewModel { get; set; }
-
         public bool IsSettingView { get; set; }
 
-        private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         public MainVM()
         {
             MenuviewModel = new MenuVM();
@@ -53,7 +50,7 @@ namespace InvestmentManage.Presentation.ViewModels
             Menuview = new MenuV();
             HomeView = new HomeV();
             OTCMarketMainViewModel = new OTCMarketMainVM();
-            OTCMarketMainView =new OTCMarketMainV();
+            OTCMarketMainView = new OTCMarketMainV();
             OTCMarketMainView.DataContext = OTCMarketMainViewModel;
             MainSettingviewModel = new MainSettingVM();
             _mainSettingView = new MainSettingV();
@@ -63,68 +60,77 @@ namespace InvestmentManage.Presentation.ViewModels
             MainSettingviewModel.OnFontSizeSelected = changeLbFontSize;
             MainSettingviewModel.OnFontSizeChanged = ChangeFontSize;
             MainSettingviewModel.OnLanguageSelected = ChangeLanguage;
+            MainSettingviewModel.OnChangeColor = changeTheme;
             MainSettingviewModel.ResetLanguage();
             changeLbFontSize(FontSizeType.Medium);
             LoadView(MenuType.Home);
         }
-
-        public FlowDirection AppFlowDirection { get; set; } = FlowDirection.LeftToRight;
-
-        public UserControl SelectedView { get; set; }
+        private void changeTheme()
+        {
+            HomeViewModel.ResetTheme();
+        }
 
         private void changeLbFontSize(FontSizeType fontSize)
         {
             switch (fontSize)
             {
                 case FontSizeType.Small:
-                    //MainSettingviewModel.FontSizeSlider = 10;
+                    MainSettingviewModel.FontSizeSlider = 10;
                     ChangeFontSize(10);
                     break;
                 case FontSizeType.Medium:
-                    //MainSettingviewModel.FontSizeSlider = 15;
+                    MainSettingviewModel.FontSizeSlider = 15;
                     ChangeFontSize(15);
                     break;
                 case FontSizeType.Large:
-                    //MainSettingviewModel.FontSizeSlider = 20;
+                    MainSettingviewModel.FontSizeSlider = 20;
                     ChangeFontSize(20);
                     break;
                 case FontSizeType.ExtraLarge:
-                    //MainSettingviewModel.FontSizeSlider = 27;
+                    MainSettingviewModel.FontSizeSlider = 27;
                     ChangeFontSize(27);
                     break;
-
             }
         }
         private void ChangeFontSize(int normalFontSize)
         {
-            SmalFontApp = (normalFontSize * 7) / 10;
-            MediumFontApp = normalFontSize;
-            LargeFontApp = (normalFontSize * 12) / 10;
-
-            MenuviewModel.SmalFontApp = SmalFontApp;
-            MenuviewModel.MediumFontApp = MediumFontApp;
-            MenuviewModel.LargeFontApp = LargeFontApp;
-
-            MainSettingviewModel.SmalFontApp = SmalFontApp;
-            MainSettingviewModel.MediumFontApp = MediumFontApp;
-            MainSettingviewModel.LargeFontApp = LargeFontApp;
-
-            HomeViewModel.SmalFontApp = SmalFontApp;
-            HomeViewModel.MediumFontApp = MediumFontApp;
-            HomeViewModel.LargeFontApp = LargeFontApp;
+            applyFontSize(MenuviewModel, normalFontSize);
+            applyFontSize(MainSettingviewModel, normalFontSize);
+            applyFontSize(HomeViewModel, normalFontSize);
+            applyFontSize(OTCMarketMainViewModel, normalFontSize);
+            applyFontSize(OTCMarketMainViewModel.AddOtcPlanViewModel, normalFontSize);
         }
 
-        private void ChangeLanguage(EnumM.LanguageList language)
+        private void applyFontSize(IFontSizeModel vm, int normalFontSize)
+        {
+            SmallFontApp = (normalFontSize * 6) / 10;
+            MediumFontApp = normalFontSize;
+            LargeFontApp = (normalFontSize * 13) / 10;
+
+            vm.SmallFontApp = SmallFontApp;
+            vm.MediumFontApp = MediumFontApp;
+            vm.LargeFontApp = LargeFontApp;
+        }
+
+        private void ChangeLanguage(LanguageList language)
         {
             switch (language)
             {
-                case EnumM.LanguageList.English:
+                case LanguageList.English:
                     LocalizationLanguage.SetLanguage("en");
                     AppFlowDirection = FlowDirection.LeftToRight;
                     break;
+                case LanguageList.Turkish:
+                    LocalizationLanguage.SetLanguage("tr");
+                    AppFlowDirection = FlowDirection.LeftToRight;
+                    break;
 
-                case EnumM.LanguageList.Farsi:
+                case LanguageList.Persian:
                     LocalizationLanguage.SetLanguage("fa");
+                    AppFlowDirection = FlowDirection.RightToLeft;
+                    break;
+                case LanguageList.Arabi:
+                    LocalizationLanguage.SetLanguage("ar");
                     AppFlowDirection = FlowDirection.RightToLeft;
                     break;
 
@@ -132,6 +138,7 @@ namespace InvestmentManage.Presentation.ViewModels
             MainSettingviewModel.ResetLanguage();
             MenuviewModel.ResetLanguage();
             HomeViewModel.ResetLanguage();
+            OTCMarketMainViewModel.ResetLanguage();
         }
 
         public void LoadView(MenuType item)
@@ -155,13 +162,6 @@ namespace InvestmentManage.Presentation.ViewModels
                     break;
             }
         }
-
-
-        public void ListBox_Selected(object sender, RoutedEventArgs e)
-        {
-
-        }
-
 
     }
 }

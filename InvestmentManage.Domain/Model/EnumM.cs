@@ -9,6 +9,20 @@ namespace InvestmentManage.Domain.Model
 {
     public class EnumM
     {
+        public enum ThemeModType
+        {
+            Dark,
+            Light
+        }
+        public enum ColorType
+        {
+            Blue,
+            DeepBlue,
+            Purple,
+            Orange,
+            Red,
+            Cyan,
+        }
         public enum SettingItems
         {
             Font,
@@ -18,8 +32,10 @@ namespace InvestmentManage.Domain.Model
         }
         public enum LanguageList
         {
-            Farsi,
-            English
+            Persian,
+            Arabi,
+            English,
+            Turkish
         }
 
         public enum FontSizeType

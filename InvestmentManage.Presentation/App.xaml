@@ -10,11 +10,11 @@
         
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Blue"  SecondaryColor="LightBlue" />
+                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Purple"  SecondaryColor="DeepPurple" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
                 <ResourceDictionary Source="Resources/Theme/LightPurpleTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <helper:LocalizationHelper x:Key="Loc" />
+            <!--<helper:LocalizationHelper x:Key="Loc" />-->
             <convertor:MarketTypeToResxConverter x:Key="MarketTypeToResxConverter" />
         </ResourceDictionary>
     </Application.Resources>

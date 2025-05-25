@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PropertyChanged;
 
-
-namespace InvestmentManage.Domain.Model
+namespace InvestmentManage.Domain.Model.Font
 {
-    [AddINotifyPropertyChangedInterface]
-    public class FontSizeModel
+    public interface IFontSizeModel
     {
-        public int SmalFontApp { get; set; }
+        public int SmallFontApp { get; set; }
         public int MediumFontApp { get; set; }
         public int LargeFontApp { get; set; }
     }

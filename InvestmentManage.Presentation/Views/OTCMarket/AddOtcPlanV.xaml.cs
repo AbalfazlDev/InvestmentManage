@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace InvestmentManage.Presentation.Views.Setting
+namespace InvestmentManage.Presentation.Views.OTCMarket
 {
     /// <summary>
-    /// Interaction logic for MainSettingV.xaml
+    /// Interaction logic for AddOtcPlanV.xaml
     /// </summary>
-    public partial class MainSettingV : UserControl
+    public partial class AddOtcPlanV : UserControl
     {
-        public MainSettingV()
+        public AddOtcPlanV()
         {
             InitializeComponent();
         }

@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="InvestmentManage.Presentation.Views.OTCMarket.AddOtcPlanV"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:InvestmentManage.Presentation.Views.OTCMarket"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="400">
+    <Grid 
+        Background="{DynamicResource MenuBG}"
+        Margin="15">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--<StackPanel x:Name="TestChangeFontSize" Grid.Row="1">
+            <Label Content="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="{Binding SmallFontApp,UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>-->
+        <TextBox
+            Margin="5"
+            FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
+            Foreground="{DynamicResource CommonLblFG}"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            md:HintAssist.Hint="{Binding LblOtcName}"
+            md:HintAssist.HelperTextFontSize ="{Binding SmallFontApp,UpdateSourceTrigger=PropertyChanged}"
+            md:HintAssist.Foreground="{DynamicResource MenuLblHeadFG}"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+
+    </Grid>
+</UserControl>

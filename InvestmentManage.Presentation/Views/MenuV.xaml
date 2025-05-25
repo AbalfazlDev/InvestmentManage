@@ -26,24 +26,37 @@
         <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="62" />
-                <RowDefinition Height="62" />
+                <RowDefinition Height="auto" MaxHeight="150"/>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-            <CheckBox
-                Grid.Row="2"
+            <CheckBox x:Name="DarkMode"
+                Grid.Row="3"
+                Height="auto"
+                Width="auto"
+                Margin="10"
+                Padding="10" 
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
                 FontFamily="{Binding AppFontFamily}"
                 Foreground="{DynamicResource MenuLblCommonFG}"
-                Content="{Binding DarkMode,UpdateSourceTrigger=PropertyChanged}"
+                BorderBrush="{DynamicResource MenuLblCommonFG}"
                 IsChecked="{Binding IsDarkMod}"
-                Style="{StaticResource MaterialDesignFilterChipSecondaryOutlineCheckBox}"/>
+                Style="{StaticResource MaterialDesignFilterChipPrimaryOutlineCheckBox}">
+                <Label
+                    Foreground="{DynamicResource MenuLblCommonFG}"
+                    Margin="6" 
+                    Content="{Binding DarkMode,UpdateSourceTrigger=PropertyChanged}"/>
+            </CheckBox>
 
             <Button 
+                Height="auto"
+                Width="auto"
                 Grid.Row="1"
-                Margin="5"
+                Margin="10"
+                Padding="10"
                 FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
                 FontFamily="{Binding AppFontFamily}"
                 HorizontalAlignment="Stretch"
@@ -53,7 +66,8 @@
                 Style="{StaticResource MaterialDesignFlatSecondaryDarkButton}">
                 <Button.Content>
                     <StackPanel
-                        HorizontalAlignment="Left"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch" 
                         Orientation="Horizontal">
                         <TextBlock
                             Margin="5,0,5,0"
@@ -72,7 +86,7 @@
                     Margin="15,5,0,0" 
                     Foreground="{DynamicResource MenuLblHeadFG}"
                     Content="{Binding MenuItemList}" 
-                    FontSize="{Binding SmalFontApp,UpdateSourceTrigger=PropertyChanged}"/>
+                    FontSize="{Binding SmallFontApp,UpdateSourceTrigger=PropertyChanged}"/>
                 <!--<ListBox
                     Grid.Row="1"
                     HorizontalAlignment="Center"
@@ -156,7 +170,36 @@
             </StackPanel>
             <!--<TextBlock Text="{Binding SelectedMarket, Converter={StaticResource EnumConverter}}" 
            FontSize="16" Margin="10"/>-->
-           
+            <ComboBox x:Name="SelectedUser"
+                      Grid.Row="2"
+                      Height="auto"
+                      Width="auto"
+                      Margin="10"
+                      Padding="5"
+                      md:HintAssist.Hint="{Binding LblAccount}"
+                      Foreground="{DynamicResource MenuLblCommonFG}"
+                      BorderBrush="{DynamicResource MenuLblCommonFG}"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
+                      FontFamily="{Binding AppFontFamily}"
+                      ItemsSource="{Binding UserList}"
+                      SelectedItem="{Binding SelectedUser}"
+                      Style="{StaticResource  MaterialDesignOutlinedComboBox}"
+                      md:TextFieldAssist.TextFieldCornerRadius="16">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Label 
+                                Foreground="{DynamicResource MenuLblCommonFG}"
+                                FontSize="{Binding DataContext.MediumFontApp, RelativeSource={RelativeSource AncestorType=ComboBox}}"
+                                Content="{Binding Name}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
         </Grid>
     </Border>

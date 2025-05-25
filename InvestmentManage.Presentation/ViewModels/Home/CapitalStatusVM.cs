@@ -101,6 +101,11 @@ namespace InvestmentManage.Presentation.ViewModels.Home
             //};
         }
 
+        public void ResetColor()
+        {
+            LoadChartSeries();
+        }
+
     }
 
     // Class to represent the data
