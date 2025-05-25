@@ -28,20 +28,21 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" MaxHeight="150"/>
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-            <CheckBox
-                Grid.Row="2"
+            <CheckBox x:Name="DarkMode"
+                Grid.Row="3"
                 Height="auto"
                 Width="auto"
                 Margin="10"
-                Padding="10"
-                
+                Padding="10" 
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
                 FontFamily="{Binding AppFontFamily}"
                 Foreground="{DynamicResource MenuLblCommonFG}"
+                BorderBrush="{DynamicResource MenuLblCommonFG}"
                 IsChecked="{Binding IsDarkMod}"
                 Style="{StaticResource MaterialDesignFilterChipPrimaryOutlineCheckBox}">
                 <Label
@@ -169,7 +170,36 @@
             </StackPanel>
             <!--<TextBlock Text="{Binding SelectedMarket, Converter={StaticResource EnumConverter}}" 
            FontSize="16" Margin="10"/>-->
-           
+            <ComboBox x:Name="SelectedUser"
+                      Grid.Row="2"
+                      Height="auto"
+                      Width="auto"
+                      Margin="10"
+                      Padding="5"
+                      md:HintAssist.Hint="{Binding LblAccount}"
+                      Foreground="{DynamicResource MenuLblCommonFG}"
+                      BorderBrush="{DynamicResource MenuLblCommonFG}"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      FontSize="{Binding MediumFontApp,UpdateSourceTrigger=PropertyChanged}"
+                      FontFamily="{Binding AppFontFamily}"
+                      ItemsSource="{Binding UserList}"
+                      SelectedItem="{Binding SelectedUser}"
+                      Style="{StaticResource  MaterialDesignOutlinedComboBox}"
+                      md:TextFieldAssist.TextFieldCornerRadius="16">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Label 
+                                Foreground="{DynamicResource MenuLblCommonFG}"
+                                FontSize="{Binding DataContext.MediumFontApp, RelativeSource={RelativeSource AncestorType=ComboBox}}"
+                                Content="{Binding Name}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
         </Grid>
     </Border>

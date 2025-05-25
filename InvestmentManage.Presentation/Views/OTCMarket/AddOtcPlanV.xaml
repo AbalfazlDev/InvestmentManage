@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="400">
     <Grid 
         Background="{DynamicResource MenuBG}"
-        Margin="5">
+        Margin="15">
         <Grid.RowDefinitions >
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>

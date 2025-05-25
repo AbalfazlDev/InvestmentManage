@@ -1,28 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MaterialDesignColors;
-using System.ComponentModel;
-using MaterialDesignThemes.Wpf;
-using System.Windows.Media;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Collections.ObjectModel;
+using System.Windows.Media;
+using InvestmentManage.BusinessLogic.Services.FacadPattern;
+using InvestmentManage.Domain.Model.Font;
+using InvestmentManage.Domain.Model.Menu;
+using InvestmentManage.Domain.Model.User;
 using InvestmentManage.Presentation.Helpers;
-using static InvestmentManage.Domain.Model.MarketCategory.MarketTypeM;
-using InvestmentManage.Presentation.Helpers.ThemeH;
-using InvestmentManage.Presentation.ViewModels;
-using System.Windows;
-using System.Globalization;
-using InvestmentManage.Presentation.Views;
+using InvestmentManage.Presentation.Helpers.Converter;
 using InvestmentManage.Presentation.Helpers.Language;
-using static InvestmentManage.Domain.Model.EnumM;
+using InvestmentManage.Presentation.Helpers.ThemeH;
 using InvestmentManage.Presentation.Resources.Symbol;
 using PropertyChanged;
-using InvestmentManage.Domain.Model.Menu;
-using InvestmentManage.Domain.Model.Font;
+using static InvestmentManage.Domain.Model.EnumM;
+using static InvestmentManage.Domain.Model.MarketCategory.MarketTypeM;
 
 
 namespace InvestmentManage.Presentation.ViewModels
@@ -30,29 +21,30 @@ namespace InvestmentManage.Presentation.ViewModels
     [AddINotifyPropertyChangedInterface]
     internal class MenuVM : FontSizeModel
     {
+        private UserFacad _userFacad;
         public FontFamily AppFontFamily { get; set; }
         public int AppFontSize { get; set; }
         public RelayCommand BtnSettings { get; set; }
         public string MenuItemList { get; set; }
         public string LblSettings { get; set; }
+        public string LblUser { get; set; }
+        public string LblAccount { get; set; }
         public string LblSettingsIcon => SegoeIcons.Settings;
         public ObservableCollection<MenuItemModel> MenuItemst { get; set; }
-
-
+        public ObservableCollection<UserM> UserList { get; set; }
         public string DarkMode { get; set; }
-
-
+        public MenuType SelectedMenuType { get; set; }
+        public UserM SelectedUser { get; set; }
         public Dictionary<MarketType, string> MarketIcons { get; set; }
 
         public MenuVM()
         {
-            //Markets = new ObservableCollection<MarketType>(Enum.GetValues(typeof(MarketType)).Cast<MarketType>());
-
-            //MarketsLang = new ObservableCollection<string>() { "Hello" };
-            //MarketsLang.Add("Hello") ;
+            _userFacad = new UserFacad();
+            UserList = _userFacad.GetUser.Execute().ToObservableCollection();
             AppFontSize = 10;
             BtnSettings = new RelayCommand(FuncBtnSettings);
             MenuItemst = new ObservableCollection<MenuItemModel>();
+            SelectedUser = UserList.First(); //for test
             ResetLanguage();
         }
         private void FuncBtnSettings(object sender)
@@ -91,6 +83,8 @@ namespace InvestmentManage.Presentation.ViewModels
             DarkMode = LocalizationLanguage.GetString("DarkMode");
             LblSettings = LocalizationLanguage.GetString("Setting");
             MenuItemList = LocalizationLanguage.GetString("MenuItemList");
+            LblUser = LocalizationLanguage.GetString("User");
+            LblAccount = LocalizationLanguage.GetString("Account");
             MenuItemst.Clear();
             foreach (MenuType type in Enum.GetValues(typeof(MenuType)))
             {
@@ -139,7 +133,7 @@ namespace InvestmentManage.Presentation.ViewModels
         //    }
         //}
 
-        public MenuType SelectedMenuType { get; set; }
+        
 
         private string GetLocalizedText(MenuType type)
         {

@@ -14,7 +14,7 @@ using static InvestmentManage.Domain.Model.EnumM;
 
 namespace InvestmentManage.Presentation.Helpers.ThemeH
 {
-     public static class ThemeSet
+    public static class ThemeSet
     {
         private static ColorType _color = ColorType.Purple;
         private static ThemeModType _themeMod = ThemeModType.Light;
@@ -25,13 +25,12 @@ namespace InvestmentManage.Presentation.Helpers.ThemeH
             ResetTheme();
         }
 
-
         static public void ChangeDarkMode(ThemeModType mod)
         {
             _themeMod = mod;
             ResetTheme();
         }
-       
+
         private static void ResetTheme()
         {
             var paletteHelper = new PaletteHelper();
@@ -41,15 +40,15 @@ namespace InvestmentManage.Presentation.Helpers.ThemeH
             ResourceDictionary theme = new ResourceDictionary() { Source = uri };
 
             Application.Current.Resources.MergedDictionaries.Clear();
-            
+
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary
             {
                 Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml")
             });
-            
+
             Application.Current.Resources.MergedDictionaries.Add(theme);
 
-            themeT.SetBaseTheme(ConverThemeMod(_themeMod)); 
+            themeT.SetBaseTheme(ConverThemeMod(_themeMod));
 
             themeT.SetPrimaryColor(ConvertColor(_color));
 
@@ -64,6 +63,7 @@ namespace InvestmentManage.Presentation.Helpers.ThemeH
         {
             return (mod == ThemeModType.Dark) ? BaseTheme.Dark : BaseTheme.Light;
         }
+
         public static Color ConvertColor(ColorType colorType)
         {
             switch (colorType)
@@ -81,7 +81,7 @@ namespace InvestmentManage.Presentation.Helpers.ThemeH
                 case ColorType.Cyan:
                     return Colors.Cyan;
                 default:
-                    return Colors.Black; 
+                    return Colors.Black;
             }
         }
     }

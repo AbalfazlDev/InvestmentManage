@@ -72,7 +72,7 @@
                     VerticalAlignment="Center"
                     HorizontalAlignment="Stretch"
                     Width="auto"
-                    Minimum="10" 
+                    Minimum="7" 
                     Maximum="40" 
                     TickFrequency="1"
                     TickPlacement="None"
