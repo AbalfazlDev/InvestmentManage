@@ -26,7 +26,7 @@
             Foreground="{DynamicResource CommonLblFG}"
             Style="{StaticResource MaterialDesignOutlineChip}">          
             <md:Chip.Icon>
-                <Image Source="C:\Users\abalf\Downloads\Abalfazl.jpg"/>
+                <Image Source="C:\Users\abalf\Downloads\20250202_114937.jpg"/>
             </md:Chip.Icon>
         </md:Chip>
 

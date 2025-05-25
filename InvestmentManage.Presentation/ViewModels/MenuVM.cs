@@ -44,7 +44,7 @@ namespace InvestmentManage.Presentation.ViewModels
             AppFontSize = 10;
             BtnSettings = new RelayCommand(FuncBtnSettings);
             MenuItemst = new ObservableCollection<MenuItemModel>();
-            SelectedUser = UserList.First(); //for test
+            SelectedUser = UserList.Last(); //for test
             ResetLanguage();
         }
         private void FuncBtnSettings(object sender)
