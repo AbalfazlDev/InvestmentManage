@@ -21,7 +21,6 @@ namespace InvestmentManage.Presentation.ViewModels.Home
         #endregion
 
 
-
         public HomeVM()
         {
             CapitalStatusViewModel = new CapitalStatusVM();
